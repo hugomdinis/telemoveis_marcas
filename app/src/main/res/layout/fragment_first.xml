@@ -8,10 +8,14 @@
 
     <Button
         android:id="@+id/button_first"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
         android:layout_marginBottom="130dp"
+        android:backgroundTint="#673AB7"
         android:text="@string/sobre"
+        android:textColor="#C5CAE9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -19,9 +23,13 @@
 
     <Button
         android:id="@+id/button_telemoveis"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#673AB7"
         android:text="@string/telemoveis"
+        android:textColor="#C5CAE9"
         app:layout_constraintBottom_toTopOf="@+id/button_marcas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,20 +37,28 @@
 
     <Button
         android:id="@+id/button_marcas"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="100dp"
+        android:backgroundTint="#673AB7"
         android:text="@string/marcas"
+        android:textColor="#C5CAE9"
         app:layout_constraintBottom_toTopOf="@+id/button_pesquisar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_pesquisar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="100dp"
+        android:backgroundTint="#673AB7"
         android:text="@string/pesquisar"
+        android:textColor="#C5CAE9"
         app:layout_constraintBottom_toTopOf="@+id/button_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
