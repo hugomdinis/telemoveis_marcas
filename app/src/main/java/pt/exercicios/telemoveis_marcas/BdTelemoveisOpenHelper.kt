@@ -13,6 +13,9 @@ class BdTelemoveisOpenHelper(
     name: String?,
     version: Int
 ) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSÃO_BASE_DADOS) {
+    //called when de database is created for the first time. This is where the creation of tables and
+    //and the initial population of the tables should happen.
+
     override fun onCreate(p0: SQLiteDatabase?) {
         TODO("Not yet implemented")
     }
