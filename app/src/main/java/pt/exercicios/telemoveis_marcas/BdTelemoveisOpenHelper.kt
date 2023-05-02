@@ -18,4 +18,5 @@ class BdTelemoveisOpenHelper(
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
+    }
 }
