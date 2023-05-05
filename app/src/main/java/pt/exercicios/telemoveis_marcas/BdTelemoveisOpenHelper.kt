@@ -17,7 +17,9 @@ class BdTelemoveisOpenHelper(
     //and the initial population of the tables should happen.
 
     override fun onCreate(db: SQLiteDatabase?) {
-
+        requireNotNull(db)
+        TabelaMarca(db!!).cria()
+        TabelaTelemoveis(db!!).cria()
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
