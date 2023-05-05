@@ -16,10 +16,10 @@ class BdTelemoveisOpenHelper(
     //called when de database is created for the first time. This is where the creation of tables and
     //and the initial population of the tables should happen.
 
-    override fun onCreate(p0: SQLiteDatabase?) {
-        TODO("Not yet implemented")
+    override fun onCreate(db: SQLiteDatabase?) {
+
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
+    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
     }
 }
