@@ -25,6 +25,7 @@ class BdInstrumentedTest {
     fun apagaBaseDados(){
         getAppContext().deleteDatabase(BdTelemoveisOpenHelper.NOME_BASE_DADOS)
     }
+
     @Test
     fun consegueAbrirBaseDados() {
         val openHelper = BdTelemoveisOpenHelper(getAppContext())
