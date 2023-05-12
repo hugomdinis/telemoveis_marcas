@@ -39,7 +39,7 @@ class BdInstrumentedTest {
         val bd = openHelper.writableDatabase
 
         val marca = Marca("Samsung")
-        //TabelaTelemoveis(bd).insere()
+        TabelaTelemoveis(bd).insere(marca.toContentValues())
     }
 
     fun useAppContext(){
