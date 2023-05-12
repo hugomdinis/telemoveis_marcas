@@ -33,6 +33,15 @@ class BdInstrumentedTest {
         assert(bd.isOpen)
     }
 
+    @Test
+    fun consegueInserirMarcas(){
+        val openHelper = BdTelemoveisOpenHelper(getAppContext())
+        val bd = openHelper.writableDatabase
+
+        val marca = Marca("Samsung")
+        //TabelaTelemoveis(bd).insere()
+    }
+
     fun useAppContext(){
         val appContext = getAppContext()
         assertEquals("com.exercicios.telemoveis_marcas", appContext.packageName)
