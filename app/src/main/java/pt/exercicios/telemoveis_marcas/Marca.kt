@@ -9,7 +9,7 @@ data class Marca(
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
 
-        valores.put(TabelaTelemoveis.CAMPO_NOME, nome)
+        valores.put(TabelaMarca.CAMPO_NOME, nome)
 
         return valores
     }

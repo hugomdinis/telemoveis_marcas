@@ -39,7 +39,8 @@ class BdInstrumentedTest {
         val bd = openHelper.writableDatabase
 
         val marca = Marca("Samsung")
-        TabelaTelemoveis(bd).insere(marca.toContentValues())
+        val id = TabelaMarca(bd).insere(marca.toContentValues())
+        assertNotEquals(-1, id)
     }
 
     fun useAppContext(){
