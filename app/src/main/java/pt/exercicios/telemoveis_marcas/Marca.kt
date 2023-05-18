@@ -20,10 +20,10 @@ data class Marca(
 
         fun fromCursor(cursor : Cursor) : Marca{
             val posId = cursor.getColumnIndex(BaseColumns._ID)
-            val posMarcas = cursor.getColumnIndex(TabelaMarca.CAMPO_NOME)
+            val posMarca = cursor.getColumnIndex(TabelaMarca.CAMPO_NOME)
 
             val id = cursor.getLong(posId)
-            val nome = cursor.getString(posMarcas)
+            val nome = cursor.getString(posMarca)
 
             return Marca(nome,id)
         }

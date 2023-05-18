@@ -69,37 +69,71 @@ class BdInstrumentedTest {
         val marca = Marca("Samsung")
         insereMarca(bd, marca)
 
-        val telemovel = Telemovel ("GALAXY A14", "Como Novo",2019,1,marca.id)
+        val telemovel = Telemovel ("GALAXY A14", "Como Novo",2019,marca.id)
         insereTelemovel(bd, telemovel)
     }
 
     @Test
-    fun consequeLerMarcas(){
+    fun consequeLerTelemoveis(){
         val bd = getWritableDatabase()
 
-        val marcaMotorola = Marca("Motorola")
-        insereMarca(bd, marcaMotorola)
+        val telemovelMotorola = Telemovel("b12", "Usado",2007,1,1)
+        insereTelemovel(bd, telemovelMotorola)
 
-        val marcaIphone = Marca("Iphone")
-        insereMarca(bd, marcaIphone)
+        val telemovelIphone = Telemovel("14", "Novo",2019,2,2)
+        insereTelemovel(bd, telemovelIphone)
+
+        val tabelaTelemovel = TabelaTelemoveis(bd)
+        val cursor = tabelaTelemovel.consulta(TabelaMarca.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(telemovelIphone.id.toString()),
+            null,null,null)
+
+        assert(cursor.moveToNext())
+
+        val telemovelBD = Telemovel.fromCursor(cursor)
+
+        assertEquals(telemovelIphone, telemovelBD)
+
+        val cursorTodasOsTelemoveis = tabelaTelemovel.consulta(
+            TabelaTelemoveis.TODOS_OS_CAMPOS,
+            null,null,null,null,
+            TabelaTelemoveis.CAMPO_MODELO
+        )
+
+        assert(cursorTodasOsTelemoveis.count > 1)
+    }
+
+    @Test
+    fun consegueLerMarca(){
+        val bd = getWritableDatabase()
+
+        val marca = Marca("Iphone")
+        insereMarca(bd, marca)
+
+        val marca1 = Marca("Samsung")
+        insereMarca(bd, marca1)
+
+        val marca2 = Marca("Xiaomi")
+        insereMarca(bd, marca2)
 
         val tabelaMarca = TabelaMarca(bd)
-        val cursor = tabelaMarca.consulta(TabelaMarca.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(marcaIphone.id.toString()),null,null,null)
+
+        val cursor = tabelaMarca.consulta(TabelaMarca.TODOS_OS_CAMPOS, "${BaseColumns._ID}=?",arrayOf(marca.id.toString()),
+            null,null,null)
+
         assert(cursor.moveToNext())
 
         val marcaBD = Marca.fromCursor(cursor)
 
-        assertEquals(marcaIphone, marcaBD)
+        assertEquals(marca1, marcaBD)
 
-        val cursorTodasAsMarcas = tabelaMarca.consulta(
+        val cursorTodasTelemoveis= tabelaMarca.consulta(
             TabelaMarca.TODOS_OS_CAMPOS,
-            null,null,null,null,
+            null,null, null, null,
             TabelaMarca.CAMPO_NOME
         )
 
-        assert(cursorTodasAsMarcas.count > 1)
+        assert(cursorTodasTelemoveis.count > 1)
     }
-
 
     fun useAppContext(){
         val appContext = getAppContext()
