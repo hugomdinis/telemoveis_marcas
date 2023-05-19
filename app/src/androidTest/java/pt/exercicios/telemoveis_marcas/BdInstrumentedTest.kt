@@ -25,7 +25,7 @@ class BdInstrumentedTest {
         telemovel: Telemovel
     ) {
         TabelaTelemoveis(bd).insere(telemovel.toContentValues())
-        assertNotEquals(-1, telemovel.id)
+        assertNotEquals(-1, telemovel.idTelemovel)
     }
 
     private fun insereMarca(bd: SQLiteDatabase, marca: Marca) {
@@ -69,7 +69,7 @@ class BdInstrumentedTest {
         val marca = Marca("Samsung")
         insereMarca(bd, marca)
 
-        val telemovel = Telemovel ("GALAXY A14", "Como Novo",2019,marca.id)
+        val telemovel = Telemovel ("GALAXY A14", "Como Novo",2019,marca.idMarca)
         insereTelemovel(bd, telemovel)
     }
 
@@ -77,14 +77,17 @@ class BdInstrumentedTest {
     fun consequeLerTelemoveis(){
         val bd = getWritableDatabase()
 
-        val telemovelMotorola = Telemovel("b12", "Usado",2007,1,1)
+        val marca = Marca("Samsung")
+        insereMarca(bd, marca)
+
+        val telemovelMotorola = Telemovel("b12", "Usado",2007)
         insereTelemovel(bd, telemovelMotorola)
 
-        val telemovelIphone = Telemovel("14", "Novo",2019,2,2)
+        val telemovelIphone = Telemovel("14", "Novo",2019)
         insereTelemovel(bd, telemovelIphone)
 
         val tabelaTelemovel = TabelaTelemoveis(bd)
-        val cursor = tabelaTelemovel.consulta(TabelaMarca.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(telemovelIphone.id.toString()),
+        val cursor = tabelaTelemovel.consulta(TabelaMarca.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(telemovelIphone.idTelemovel.toString()),
             null,null,null)
 
         assert(cursor.moveToNext())
@@ -117,7 +120,7 @@ class BdInstrumentedTest {
 
         val tabelaMarca = TabelaMarca(bd)
 
-        val cursor = tabelaMarca.consulta(TabelaMarca.TODOS_OS_CAMPOS, "${BaseColumns._ID}=?",arrayOf(marca.id.toString()),
+        val cursor = tabelaMarca.consulta(TabelaMarca.TODOS_OS_CAMPOS, "${BaseColumns._ID}=?",arrayOf(marca.idMarca.toString()),
             null,null,null)
 
         assert(cursor.moveToNext())
@@ -133,6 +136,79 @@ class BdInstrumentedTest {
         )
 
         assert(cursorTodasTelemoveis.count > 1)
+    }
+
+    @Test
+    fun consegueAlterarMarca(){
+        val bd = getWritableDatabase()
+
+        val marca = Marca("...")
+        insereMarca(bd, marca)
+
+        marca.nome_marca = "POCO"
+
+        val registosAlteradas = TabelaMarca(bd).altera(marca.toContentValues(), "${BaseColumns._ID}=?",arrayOf(marca.idMarca.toString()))
+
+        assertEquals(1, registosAlteradas)
+    }
+
+    @Test
+    fun consegueAlterarTelemoveis(){
+        val bd = getWritableDatabase()
+
+        val marca = Marca("ZET")
+        insereMarca(bd, marca)
+
+        val marcaVivo = Marca("VIVO")
+        insereMarca(bd, marcaVivo)
+
+        val telemovel = Telemovel("...", "...",2007,marca.idMarca)
+        insereTelemovel(bd, telemovel)
+
+        telemovel.idTelemovel = marcaVivo.idMarca
+        telemovel.modelo = "z3"
+        telemovel.informacao = "Usado"
+        telemovel.ano = 2009
+
+        val resgistosAlterados = TabelaTelemoveis(bd).altera(telemovel.toContentValues(),"${BaseColumns._ID}=?", arrayOf(telemovel.idTelemovel.toString()))
+
+        assertEquals(1, resgistosAlterados)
+
+
+    }
+
+    @Test
+    fun consegueApagarMarca(){
+        val bd = getWritableDatabase()
+
+        val marca = Marca("...")
+        insereMarca(bd, marca)
+
+        marca.nome_marca = "POCO"
+
+        val registosEliminados = TabelaMarca(bd).elimina("${BaseColumns._ID}=?",arrayOf(marca.idMarca.toString()))
+
+        assertEquals(1, registosEliminados)
+    }
+
+    @Test
+    fun consegueApagarTelemoveis(){
+        val bd = getWritableDatabase()
+
+        val marca = Marca("ZET")
+        insereMarca(bd, marca)
+
+        val telemovel = Telemovel("...", "...",2007,marca.idMarca)
+        insereTelemovel(bd, telemovel)
+
+        telemovel.idTelemovel = marca.idMarca
+        telemovel.modelo = "z3"
+        telemovel.informacao = "Usado"
+        telemovel.ano = 2009
+
+        val resgistosEliminados = TabelaTelemoveis(bd).elimina("${BaseColumns._ID}=?", arrayOf(telemovel.idTelemovel.toString()))
+
+        assertEquals(1, resgistosEliminados)
     }
 
     fun useAppContext(){

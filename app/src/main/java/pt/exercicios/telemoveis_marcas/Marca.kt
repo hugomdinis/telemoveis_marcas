@@ -6,7 +6,7 @@ import android.provider.BaseColumns
 
 data class Marca(
     var nome_marca: String,
-    var id: Long = -1
+    var idMarca: Long = -1
 ) {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()

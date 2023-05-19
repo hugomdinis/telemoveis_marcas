@@ -9,7 +9,7 @@ data class Telemovel(
     var informacao: String?,
     var ano: Int,
     var id_marca: Long = -1,
-    var id: Long = -1
+    var idTelemovel: Long = -1
 ){
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
