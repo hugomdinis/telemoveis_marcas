@@ -24,13 +24,13 @@ class BdInstrumentedTest {
         bd: SQLiteDatabase,
         telemovel: Telemovel
     ) {
-        TabelaTelemoveis(bd).insere(telemovel.toContentValues())
+        telemovel.idTelemovel = TabelaTelemoveis(bd).insere(telemovel.toContentValues())
         assertNotEquals(-1, telemovel.idTelemovel)
     }
 
     private fun insereMarca(bd: SQLiteDatabase, marca: Marca) {
-        val id = TabelaMarca(bd).insere(marca.toContentValues())
-        assertNotEquals(-1, id)
+        marca.idMarca = TabelaMarca(bd).insere(marca.toContentValues())
+        assertNotEquals(-1, marca.idMarca)
     }
 
     private fun getWritableDatabase(): SQLiteDatabase {
@@ -80,10 +80,10 @@ class BdInstrumentedTest {
         val marca = Marca("Samsung")
         insereMarca(bd, marca)
 
-        val telemovelMotorola = Telemovel("b12", "Usado",2007)
+        val telemovelMotorola = Telemovel("b12", "Usado",2007,marca.idMarca)
         insereTelemovel(bd, telemovelMotorola)
 
-        val telemovelIphone = Telemovel("14", "Novo",2019)
+        val telemovelIphone = Telemovel("14", "Novo",2019, marca.idMarca)
         insereTelemovel(bd, telemovelIphone)
 
         val tabelaTelemovel = TabelaTelemoveis(bd)
@@ -115,12 +115,9 @@ class BdInstrumentedTest {
         val marca1 = Marca("Samsung")
         insereMarca(bd, marca1)
 
-        val marca2 = Marca("Xiaomi")
-        insereMarca(bd, marca2)
-
         val tabelaMarca = TabelaMarca(bd)
 
-        val cursor = tabelaMarca.consulta(TabelaMarca.TODOS_OS_CAMPOS, "${BaseColumns._ID}=?",arrayOf(marca.idMarca.toString()),
+        val cursor = tabelaMarca.consulta(TabelaMarca.TODOS_OS_CAMPOS, "${BaseColumns._ID}=?",arrayOf(marca1.idMarca.toString()),
             null,null,null)
 
         assert(cursor.moveToNext())
@@ -184,8 +181,6 @@ class BdInstrumentedTest {
         val marca = Marca("...")
         insereMarca(bd, marca)
 
-        marca.nome_marca = "POCO"
-
         val registosEliminados = TabelaMarca(bd).elimina("${BaseColumns._ID}=?",arrayOf(marca.idMarca.toString()))
 
         assertEquals(1, registosEliminados)
@@ -200,11 +195,6 @@ class BdInstrumentedTest {
 
         val telemovel = Telemovel("...", "...",2007,marca.idMarca)
         insereTelemovel(bd, telemovel)
-
-        telemovel.idTelemovel = marca.idMarca
-        telemovel.modelo = "z3"
-        telemovel.informacao = "Usado"
-        telemovel.ano = 2009
 
         val resgistosEliminados = TabelaTelemoveis(bd).elimina("${BaseColumns._ID}=?", arrayOf(telemovel.idTelemovel.toString()))
 

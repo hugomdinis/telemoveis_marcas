@@ -2,6 +2,7 @@ package pt.exercicios.telemoveis_marcas
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 
@@ -37,6 +38,22 @@ class TelemoveisContentProvider : ContentProvider(){
 
     override fun update(p0: Uri, p1: ContentValues?, p2: String?, p3: Array<out String>?): Int {
         TODO("Not yet implemented")
+    }
+
+    companion object{
+        private const val AUTORIDADE = "pt.exercicios.telemoveis_marcas"
+
+        const val MARCA = "Marca"
+        const val  TELEMOVEIS = "Telemovel"
+
+        private const val URI_MARCA = 100
+        private const val URI_TELEMOVEIS = 200
+
+        fun UriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
+            addURI(AUTORIDADE, MARCA, URI_MARCA)
+            addURI(AUTORIDADE, TELEMOVEIS, URI_TELEMOVEIS)
+
+        }
     }
 
 }
