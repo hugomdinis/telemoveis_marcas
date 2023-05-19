@@ -10,6 +10,7 @@ class TelemoveisContentProvider : ContentProvider(){
     private var bdOpenHelper : BdTelemoveisOpenHelper? = null
     override fun onCreate(): Boolean {
         bdOpenHelper = BdTelemoveisOpenHelper(context)
+        return true
     }
 
     override fun query(
