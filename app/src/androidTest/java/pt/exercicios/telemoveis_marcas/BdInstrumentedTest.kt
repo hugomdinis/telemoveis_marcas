@@ -87,7 +87,7 @@ class BdInstrumentedTest {
         insereTelemovel(bd, telemovelIphone)
 
         val tabelaTelemovel = TabelaTelemoveis(bd)
-        val cursor = tabelaTelemovel.consulta(TabelaMarca.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(telemovelIphone.idTelemovel.toString()),
+        val cursor = tabelaTelemovel.consulta(TabelaTelemoveis.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(telemovelIphone.idTelemovel.toString()),
             null,null,null)
 
         assert(cursor.moveToNext())
@@ -162,12 +162,16 @@ class BdInstrumentedTest {
         val telemovel = Telemovel("...", "...",2007,marca.idMarca)
         insereTelemovel(bd, telemovel)
 
-        telemovel.idTelemovel = marcaVivo.idMarca
+        telemovel.id_marca = marcaVivo.idMarca
         telemovel.modelo = "z3"
-        telemovel.informacao = "Usado"
         telemovel.ano = 2009
+        telemovel.informacao = "Usado"
 
-        val resgistosAlterados = TabelaTelemoveis(bd).altera(telemovel.toContentValues(),"${BaseColumns._ID}=?", arrayOf(telemovel.idTelemovel.toString()))
+        val resgistosAlterados = TabelaTelemoveis(bd).altera(
+            telemovel.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(telemovel.idTelemovel.toString())
+        )
 
         assertEquals(1, resgistosAlterados)
 
@@ -181,7 +185,9 @@ class BdInstrumentedTest {
         val marca = Marca("...")
         insereMarca(bd, marca)
 
-        val registosEliminados = TabelaMarca(bd).elimina("${BaseColumns._ID}=?",arrayOf(marca.idMarca.toString()))
+        val registosEliminados = TabelaMarca(bd).elimina(
+            "${BaseColumns._ID}=?",
+            arrayOf(marca.idMarca.toString()))
 
         assertEquals(1, registosEliminados)
     }
@@ -193,10 +199,13 @@ class BdInstrumentedTest {
         val marca = Marca("ZET")
         insereMarca(bd, marca)
 
-        val telemovel = Telemovel("...", "...",2007,marca.idMarca)
+        val telemovel = Telemovel(".", "...",2007,marca.idMarca)
         insereTelemovel(bd, telemovel)
 
-        val resgistosEliminados = TabelaTelemoveis(bd).elimina("${BaseColumns._ID}=?", arrayOf(telemovel.idTelemovel.toString()))
+        val resgistosEliminados = TabelaTelemoveis(bd).elimina(
+            "${BaseColumns._ID}=?",
+            arrayOf(telemovel.idTelemovel.toString())
+        )
 
         assertEquals(1, resgistosEliminados)
     }
