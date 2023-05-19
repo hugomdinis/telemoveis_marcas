@@ -6,8 +6,10 @@ import android.database.Cursor
 import android.net.Uri
 
 class TelemoveisContentProvider : ContentProvider(){
+
+    private var bdOpenHelper : BdTelemoveisOpenHelper? = null
     override fun onCreate(): Boolean {
-        TODO("Not yet implemented")
+        bdOpenHelper = BdTelemoveisOpenHelper(context)
     }
 
     override fun query(
