@@ -25,15 +25,15 @@ class TelemoveisContentProvider : ContentProvider() {
         val bd = bdOpenHelper!!.readableDatabase
 
         val endereco = UriMatcher().match(uri)
+
         val tabela = when (endereco) {
             URI_MARCA, URI_MARCA_ID -> TabelaMarca(bd)
             URI_TELEMOVEIS, URI_TELEMOVEL_ID -> TabelaTelemoveis(bd)
             else -> null
         }
-
         val id = uri.lastPathSegment
 
-        val selecao = when (endereco) {
+        val (selecao, argsSel) = when (endereco) {
             URI_MARCA_ID, URI_TELEMOVEL_ID -> Pair("${BaseColumns._ID}=?",arrayOf(id))
             else -> Pair(selection,selectionArgs)
         }
@@ -41,27 +41,58 @@ class TelemoveisContentProvider : ContentProvider() {
         return tabela?.consulta(
                 projection as Array<String>,
                 selecao,
-                selectionArgs as Array<String>?,
+                argsSel as Array<String>?,
                 null,
                 null,
                 sortOrder)
 
     }
 
-    override fun getType(p0: Uri): String? {
+    override fun getType(uri: Uri): String? {
         TODO("Not yet implemented")
     }
 
-    override fun insert(p0: Uri, p1: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+    override fun insert(uri: Uri, values: ContentValues?): Uri? {
+        val bd = bdOpenHelper!!.readableDatabase
+
+        val endereco = UriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_MARCA -> TabelaMarca(bd)
+            URI_TELEMOVEIS -> TabelaTelemoveis(bd)
+            else -> return null
+        }
+        val id = tabela.insere(values!!)
+        if (id == -1L){
+            return null
+        }
+
+        return Uri.withAppendedPath(uri, id.toString())
     }
 
-    override fun delete(p0: Uri, p1: String?, p2: Array<out String>?): Int {
-        TODO("Not yet implemented")
+    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+        val bd = bdOpenHelper!!.writableDatabase
+
+        val endereco = UriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_MARCA_ID -> TabelaMarca(bd)
+            URI_TELEMOVEL_ID -> TabelaTelemoveis(bd)
+            else -> return 0
+        }
+        val id = uri.lastPathSegment!!
+        return tabela.elimina("${BaseColumns._ID}=?", arrayOf(id))
     }
 
-    override fun update(p0: Uri, p1: ContentValues?, p2: String?, p3: Array<out String>?): Int {
-        TODO("Not yet implemented")
+    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int {
+        val bd = bdOpenHelper!!.writableDatabase
+
+        val endereco = UriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_MARCA_ID -> TabelaMarca(bd)
+            URI_TELEMOVEL_ID -> TabelaTelemoveis(bd)
+            else -> return 0
+        }
+        val id = uri.lastPathSegment!!
+        return tabela.altera(values!!, "${BaseColumns._ID}=?", arrayOf(id))
     }
 
     companion object{
@@ -84,8 +115,6 @@ class TelemoveisContentProvider : ContentProvider() {
 
 
         }
-
-        // pt.exercicios.telemoveis_marcas
     }
 
 }
