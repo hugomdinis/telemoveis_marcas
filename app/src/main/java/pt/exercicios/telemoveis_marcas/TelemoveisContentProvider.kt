@@ -49,11 +49,19 @@ class TelemoveisContentProvider : ContentProvider() {
     }
 
     override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
+        val endereco = UriMatcher().match(uri)
+
+        return  when(endereco){
+            URI_MARCA -> "vnd.android.cursor.dir/$MARCA"
+            URI_MARCA_ID -> "vnd.android.cursor.item/$MARCA"
+            URI_TELEMOVEIS -> "vnd.android.cursor.dir/$TELEMOVEIS"
+            URI_TELEMOVEL_ID -> "vnd.android.cursor.item/$TELEMOVEIS"
+            else -> null
+        }
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        val bd = bdOpenHelper!!.readableDatabase
+        val bd = bdOpenHelper!!.writableDatabase
 
         val endereco = UriMatcher().match(uri)
         val tabela = when (endereco) {
