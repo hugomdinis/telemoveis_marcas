@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pt.exercicios.telemoveis_marcas.databinding.FragmentListaDeTelemoveisBinding
+import pt.exercicios.telemoveis_marcas.databinding.FragmentSobreBinding
 
 
 private const val ID_LOADER_TELEMOVEIS = 0
@@ -34,7 +35,8 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_de_telemoveis, container, false)
+        _binding = FragmentListaDeTelemoveisBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,5 +63,10 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         TODO("Not yet implemented")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
