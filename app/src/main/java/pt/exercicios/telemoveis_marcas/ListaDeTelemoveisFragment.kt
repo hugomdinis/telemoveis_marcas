@@ -1,7 +1,10 @@
 package pt.exercicios.telemoveis_marcas
 
+import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.LoaderManager
+import android.support.v4.content.Loader
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +13,7 @@ import pt.exercicios.telemoveis_marcas.databinding.FragmentListaDeTelemoveisBind
 import pt.exercicios.telemoveis_marcas.databinding.FragmentMenuPrincipalBinding
 
 
-class ListaDeTelemoveisFragment : Fragment() {
+class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentListaDeTelemoveisBinding? = null
     //
@@ -42,5 +45,17 @@ class ListaDeTelemoveisFragment : Fragment() {
     }
 
     companion object {
+    }
+
+    override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoaderReset(p0: Loader<Cursor>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoadFinished(p0: Loader<Cursor>, p1: Cursor?) {
+        TODO("Not yet implemented")
     }
 }
