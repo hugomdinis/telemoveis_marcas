@@ -15,8 +15,8 @@
             android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
             app:destination="@id/SobreFragment" />
         <action
-            android:id="@+id/action_MenuPrincipalFragment_to_listaDeMarcasFragment"
-            app:destination="@id/ListaDeMarcasFragment" />
+            android:id="@+id/action_MenuPrincipalFragment_to_listaDeTelemoveisFragment"
+            app:destination="@id/ListaDeTelemoveisFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -29,12 +29,12 @@
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
     <fragment
-        android:id="@+id/ListaDeMarcasFragment"
-        android:name="pt.exercicios.telemoveis_marcas.ListaDeMarcasFragment"
-        android:label="@string/lista_de_marcas_label"
-        tools:layout="@layout/fragment_lista_de_marcas">
+        android:id="@+id/ListaDeTelemoveisFragment"
+        android:name="pt.exercicios.telemoveis_marcas.ListaDeTelemoveisFragment"
+        android:label="@string/lista_de_telemoveis_label"
+        tools:layout="@layout/fragment_lista_de_telemoveis">
         <action
-            android:id="@+id/action_listaDeMarcasFragment_to_MenuPrincipalFragment"
+            android:id="@+id/action_listaDeTelemoveisFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>

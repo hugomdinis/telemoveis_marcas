@@ -37,7 +37,7 @@ class MenuPrincipalFragment : Fragment() {
         }
 
         binding.buttonMarcas.setOnClickListener {
-            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaDeMarcasFragment)
+            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaDeTelemoveisFragment)
         }
     }
 

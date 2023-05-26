@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.view.ViewGroup
 
-class AdapterMarcas: RecyclerView.Adapter<AdapterMarcas.ViewHolderMarca>() {
+class AdapterTelemoveis: RecyclerView.Adapter<AdapterTelemoveis.ViewHolderMarca>() {
     inner class ViewHolderMarca(intemView: View): ViewHolder(intemView){
 
     }
