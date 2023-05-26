@@ -13,6 +13,7 @@ import pt.exercicios.telemoveis_marcas.databinding.FragmentMenuPrincipalBinding
 class ListaDeTelemoveisFragment : Fragment() {
 
     private var _binding: FragmentListaDeTelemoveisBinding? = null
+    //
 
     // This property is only valid between onCreateView and
     // onDestroyView.
