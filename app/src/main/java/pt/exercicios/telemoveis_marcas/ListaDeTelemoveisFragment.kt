@@ -10,8 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pt.exercicios.telemoveis_marcas.databinding.FragmentListaDeTelemoveisBinding
-import pt.exercicios.telemoveis_marcas.databinding.FragmentMenuPrincipalBinding
 
+
+private const val ID_LOADER_TELEMOVEIS = 0
 
 class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -42,20 +43,23 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         val adapterTelemoveis = AdapterTelemoveis()
         binding.recyclerviewTelemoveis.adapter = adapterTelemoveis
         binding.recyclerviewTelemoveis.layoutManager = LinearLayoutManager(requireContext())
+
+        val loader = LoaderManager.getInstance(this)
+        loader.initLoader(ID_LOADER_TELEMOVEIS, null, this)
     }
 
     companion object {
     }
 
-    override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         TODO("Not yet implemented")
     }
 
-    override fun onLoaderReset(p0: Loader<Cursor>) {
+    override fun onLoaderReset(loader: Loader<Cursor>) {
         TODO("Not yet implemented")
     }
 
-    override fun onLoadFinished(p0: Loader<Cursor>, p1: Cursor?) {
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         TODO("Not yet implemented")
     }
 }
