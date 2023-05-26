@@ -35,7 +35,12 @@ class MenuPrincipalFragment : Fragment() {
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_SobreFragment)
         }
+
+        binding.buttonMarcas.setOnClickListener {
+            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaDeMarcasFragment)
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
