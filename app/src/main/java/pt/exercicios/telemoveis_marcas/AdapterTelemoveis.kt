@@ -6,26 +6,28 @@ import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.view.ViewGroup
 
-class AdapterTelemoveis: RecyclerView.Adapter<AdapterTelemoveis.ViewHolderMarca>() {
+class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.Adapter<AdapterTelemoveis.ViewHolderTelemoveis>() {
     var cursor:Cursor? = null
         set(value) {
             field = value
             notifyDataSetChanged()
     }
 
-    inner class ViewHolderMarca(intemView: View): ViewHolder(intemView){
+    inner class ViewHolderTelemoveis(intemView: View): ViewHolder(intemView){
 
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolderMarca {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTelemoveis {
+        return ViewHolderTelemoveis(
+            fragment.layoutInflater.inflate(R.layout.item_telemovel, parent, false)
+        )
     }
 
     override fun getItemCount(): Int {
         return cursor?.count?:0
     }
 
-    override fun onBindViewHolder(p0: ViewHolderMarca, p1: Int) {
+    override fun onBindViewHolder(holder: ViewHolderTelemoveis, position: Int) {
         TODO("Not yet implemented")
     }
 }

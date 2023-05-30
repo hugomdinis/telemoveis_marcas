@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pt.exercicios.telemoveis_marcas.databinding.FragmentListaDeTelemoveisBinding
-import pt.exercicios.telemoveis_marcas.databinding.FragmentSobreBinding
 
 
 private const val ID_LOADER_TELEMOVEIS = 0
@@ -40,16 +39,13 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         return binding.root
     }
 
-    private val adapterTelemoveis: AdapterTelemoveis
-        get() {
-            val adapterTelemoveis = AdapterTelemoveis()
-            return adapterTelemoveis
-        }
+    private var adapterTelemoveis: AdapterTelemoveis? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapterTelemoveis = adapterTelemoveis
+        adapterTelemoveis = AdapterTelemoveis(this)
         binding.recyclerviewTelemoveis.adapter = adapterTelemoveis
         binding.recyclerviewTelemoveis.layoutManager = LinearLayoutManager(requireContext())
 
@@ -75,7 +71,7 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        adapterTelemoveis.cursor = null
+        adapterTelemoveis!!.cursor = null
     }
 
     override fun onDestroyView() {
