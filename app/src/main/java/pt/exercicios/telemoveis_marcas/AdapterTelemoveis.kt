@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.Adapter<AdapterTelemoveis.ViewHolderTelemoveis>() {
     var cursor:Cursor? = null
@@ -13,8 +14,16 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
             notifyDataSetChanged()
     }
 
-    inner class ViewHolderTelemoveis(intemView: View): ViewHolder(intemView){
+    inner class ViewHolderTelemoveis(contentor: View): ViewHolder(contentor){
+        private val textViewModelo = contentor.findViewById<TextView>(R.id.textViewModelo)
+        private val textViewMarca = contentor.findViewById<TextView>(R.id.textViewMarca)
 
+        internal var telemovel: Telemovel? = null
+            set(value) {
+                field = value
+                textViewModelo.text = telemovel?.modelo ?: ""
+                textViewMarca.text = telemovel?.id_marca.toString()
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTelemoveis {
@@ -28,6 +37,7 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ViewHolderTelemoveis, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.move(position)
+        holder.telemovel = Telemovel.fromCursor(cursor!!)
     }
 }
