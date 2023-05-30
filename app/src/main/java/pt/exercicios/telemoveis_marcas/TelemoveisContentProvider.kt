@@ -114,6 +114,11 @@ class TelemoveisContentProvider : ContentProvider() {
         private const val URI_TELEMOVEIS = 200
         private const val URI_TELEMOVEL_ID = 201
 
+        private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
+
+        val ENDERECO_TELEMOVEIS = Uri.withAppendedPath(ENDERECO_BASE, TELEMOVEIS)
+        val ENDERECO_MARCA = Uri.withAppendedPath(ENDERECO_BASE, MARCA)
+
 
         fun UriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, MARCA, URI_MARCA)

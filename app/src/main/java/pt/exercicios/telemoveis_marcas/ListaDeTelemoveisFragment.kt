@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.LoaderManager
+import android.support.v4.content.CursorLoader
 import android.support.v4.content.Loader
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -54,7 +55,13 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
+        return CursorLoader(
+            requireContext(),
+            TelemoveisContentProvider.ENDERECO_TELEMOVEIS,
+            TabelaTelemoveis.TODOS_OS_CAMPOS,
+            null, null,
+            TabelaTelemoveis.NOME_TABELA
+        )
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
