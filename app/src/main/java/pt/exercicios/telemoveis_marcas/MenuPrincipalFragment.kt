@@ -36,7 +36,7 @@ class MenuPrincipalFragment : Fragment() {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_SobreFragment)
         }
 
-        binding.buttonMarcas.setOnClickListener {
+        binding.buttonTelemoveis.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaDeTelemoveisFragment)
         }
     }

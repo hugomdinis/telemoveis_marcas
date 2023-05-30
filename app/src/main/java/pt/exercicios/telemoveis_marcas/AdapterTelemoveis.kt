@@ -37,7 +37,7 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ViewHolderTelemoveis, position: Int) {
-        cursor!!.move(position)
+        cursor!!.moveToPosition(position)
         holder.telemovel = Telemovel.fromCursor(cursor!!)
     }
 }

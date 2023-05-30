@@ -39,6 +39,11 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private var adapterTelemoveis: AdapterTelemoveis? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,20 +66,16 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
             TelemoveisContentProvider.ENDERECO_TELEMOVEIS,
             TabelaTelemoveis.TODOS_OS_CAMPOS,
             null, null,
-            TabelaTelemoveis.NOME_TABELA
+            TabelaTelemoveis.CAMPO_MODELO
         )
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         adapterTelemoveis!!.cursor = null
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        adapterTelemoveis!!.cursor = data
     }
+
 }

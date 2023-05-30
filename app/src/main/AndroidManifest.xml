@@ -22,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="pt.exercicios.telemoveis_marcas"
+            android:name=".TelemoveisContentProvider"
+            android:exported="false"
+            />
     </application>
 
 </manifest>
