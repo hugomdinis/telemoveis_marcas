@@ -40,10 +40,16 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
         return binding.root
     }
 
+    private val adapterTelemoveis: AdapterTelemoveis
+        get() {
+            val adapterTelemoveis = AdapterTelemoveis()
+            return adapterTelemoveis
+        }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapterTelemoveis = AdapterTelemoveis()
+        val adapterTelemoveis = adapterTelemoveis
         binding.recyclerviewTelemoveis.adapter = adapterTelemoveis
         binding.recyclerviewTelemoveis.layoutManager = LinearLayoutManager(requireContext())
 
@@ -69,7 +75,7 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterTelemoveis.cursor = null
     }
 
     override fun onDestroyView() {
