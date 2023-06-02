@@ -32,8 +32,8 @@ class TabelaTelemoveis(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val CAMPO_INFORMACAO = "informacao"
         const val CAMPO_ANO = "ano"
         const val CAMPO_FK_MARCA = "id_marca"
-        const val CAMPO_NOME_MARCA = TabelaMarca.CAMPO_NOME;
+        const val CAMPO_DESC_MARCA = TabelaMarca.CAMPO_NOME;
 
-        val TODOS_OS_CAMPOS = arrayOf(CAMPO_ID, CAMPO_MODELO, CAMPO_INFORMACAO, CAMPO_ANO, CAMPO_FK_MARCA, CAMPO_NOME_MARCA)
+        val TODOS_OS_CAMPOS = arrayOf(CAMPO_ID, CAMPO_MODELO, CAMPO_INFORMACAO, CAMPO_ANO, CAMPO_FK_MARCA, CAMPO_DESC_MARCA)
     }
 }

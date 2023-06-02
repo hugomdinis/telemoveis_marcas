@@ -28,7 +28,7 @@ data class Telemovel(
             val posicaoAno = cursor.getColumnIndex(TabelaTelemoveis.CAMPO_ANO)
             val posicaoInf = cursor.getColumnIndex(TabelaTelemoveis.CAMPO_INFORMACAO)
             val posMarcaFK = cursor.getColumnIndex(TabelaTelemoveis.CAMPO_FK_MARCA)
-            val posNomeMarca = cursor.getColumnIndex(TabelaTelemoveis.CAMPO_NOME_MARCA)
+            val posDescMarca = cursor.getColumnIndex(TabelaTelemoveis.CAMPO_DESC_MARCA)
 
             val id = cursor.getLong(posicaoId)
             val nome = cursor.getString(posicaoNome)
@@ -36,9 +36,9 @@ data class Telemovel(
             val informacao = cursor.getString(posicaoInf)
 
             val marcaID = cursor.getLong(posMarcaFK)
-            val nomeMarca = cursor.getString(posNomeMarca)
+            val descMarca = cursor.getString(posDescMarca)
 
-            return Telemovel(nome, informacao, ano, Marca(nomeMarca,marcaID), id)
+            return Telemovel(nome, informacao, ano, Marca(descMarca,marcaID), id)
         }
 
     }
