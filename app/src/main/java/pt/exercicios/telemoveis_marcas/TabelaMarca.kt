@@ -8,10 +8,14 @@ class TabelaMarca (db:SQLiteDatabase) : TabelaBD(db, NOME_TABELA){
         db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_NOME TEXT NOT NULL)")
     }
 
+
+
     companion object{
+        const val CAMPO_ID = "${TabelaMarca.NOME_TABELA}.${BaseColumns._ID}"
+
         const val NOME_TABELA = "Marca"
         const val CAMPO_NOME = "nome"
 
-        val TODOS_OS_CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME)
+        val TODOS_OS_CAMPOS = arrayOf(CAMPO_ID, CAMPO_NOME)
     }
 }

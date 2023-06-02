@@ -44,7 +44,7 @@ class BdInstrumentedTest {
 
     @Before
     fun apagaBaseDados(){
-        getAppContext().deleteDatabase(BdTelemoveisOpenHelper.NOME_BASE_DADOS)
+        //getAppContext().deleteDatabase(BdTelemoveisOpenHelper.NOME_BASE_DADOS)
     }
 
     @Test
@@ -69,7 +69,7 @@ class BdInstrumentedTest {
         val marca = Marca("Samsung")
         insereMarca(bd, marca)
 
-        val telemovel = Telemovel ("GALAXY A14", "Como Novo",2019,marca.idMarca)
+        val telemovel = Telemovel ("GALAXY A14", "Como Novo",2019,marca)
         insereTelemovel(bd, telemovel)
     }
 
@@ -80,10 +80,10 @@ class BdInstrumentedTest {
         val marca = Marca("Samsung")
         insereMarca(bd, marca)
 
-        val telemovelMotorola = Telemovel("b12", "Usado",2007,marca.idMarca)
+        val telemovelMotorola = Telemovel("b12", "Usado",2007,marca)
         insereTelemovel(bd, telemovelMotorola)
 
-        val telemovelIphone = Telemovel("14", "Novo",2019, marca.idMarca)
+        val telemovelIphone = Telemovel("14", "Novo",2019, marca)
         insereTelemovel(bd, telemovelIphone)
 
         val tabelaTelemovel = TabelaTelemoveis(bd)
@@ -159,10 +159,10 @@ class BdInstrumentedTest {
         val marcaVivo = Marca("VIVO")
         insereMarca(bd, marcaVivo)
 
-        val telemovel = Telemovel("...", "...",2007,marca.idMarca)
+        val telemovel = Telemovel("...", "...",2007,marca)
         insereTelemovel(bd, telemovel)
 
-        telemovel.id_marca = marcaVivo.idMarca
+        telemovel.marca = marcaVivo
         telemovel.modelo = "z3"
         telemovel.ano = 2009
         telemovel.informacao = "Usado"
@@ -199,7 +199,7 @@ class BdInstrumentedTest {
         val marca = Marca("ZET")
         insereMarca(bd, marca)
 
-        val telemovel = Telemovel(".", "...",2007,marca.idMarca)
+        val telemovel = Telemovel(".", "...",2007,marca)
         insereTelemovel(bd, telemovel)
 
         val resgistosEliminados = TabelaTelemoveis(bd).elimina(

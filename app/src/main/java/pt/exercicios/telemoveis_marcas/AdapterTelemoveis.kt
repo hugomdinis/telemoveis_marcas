@@ -22,7 +22,7 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
             set(value) {
                 field = value
                 textViewModelo.text = telemovel?.modelo ?: ""
-                textViewMarca.text = telemovel?.id_marca.toString()
+                textViewMarca.text = telemovel?.marca.toString()
             }
     }
 
