@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import android.widget.TextView
 
 class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.Adapter<AdapterTelemoveis.ViewHolderTelemoveis>() {
@@ -18,14 +19,31 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
         private val textViewModelo = contentor.findViewById<TextView>(R.id.textViewModelo)
         private val textViewMarca = contentor.findViewById<TextView>(R.id.textViewMarca)
 
+        init {
+            contentor.setOnClickListener {
+                viewHolderSeleccionado?.desSeleciona()
+                seleciona()
+            }
+        }
+
         internal var telemovel: Telemovel? = null
             set(value) {
                 field = value
                 textViewModelo.text = telemovel?.modelo ?: ""
                 textViewMarca.text = telemovel?.marca?.nome_marca ?: ""
             }
+
+        fun seleciona() {
+            viewHolderSeleccionado = this
+            itemView.setBackgroundColor(R.color.item_selecionado)
+        }
+
+        fun desSeleciona() {
+            itemView.setBackgroundResource(android.R.color.white)
+        }
     }
 
+    private var viewHolderSeleccionado : ViewHolderTelemoveis? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTelemoveis {
         return ViewHolderTelemoveis(
             fragment.layoutInflater.inflate(R.layout.item_telemovel, parent, false)
