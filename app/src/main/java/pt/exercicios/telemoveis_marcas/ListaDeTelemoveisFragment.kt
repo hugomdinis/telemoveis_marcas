@@ -8,6 +8,7 @@ import android.support.v4.content.CursorLoader
 import android.support.v4.content.Loader
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import pt.exercicios.telemoveis_marcas.databinding.FragmentListaDeTelemoveisBinding
@@ -81,6 +82,36 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         adapterTelemoveis!!.cursor = data
+    }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean {
+        return when (item.itemId) {
+            R.id.action_adicionar -> {
+                adicionarTelemovel()
+                true
+            }
+            R.id.action_editar -> {
+                editarTelemovel()
+                true
+            }
+            R.id.action_eliminar -> {
+                eliminarTelemovel()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun eliminarTelemovel() {
+        TODO("Not yet implemented")
+    }
+
+    private fun editarTelemovel() {
+        TODO("Not yet implemented")
+    }
+
+    private fun adicionarTelemovel() {
+        TODO("Not yet implemented")
     }
 
 }

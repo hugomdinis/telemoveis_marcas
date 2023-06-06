@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
-    var idMenuAtual : Int = R.menu.menu_main
+    var idMenuAtual: Int = R.menu.menu_main
         set(value) {
             if (value != field) {
                 field = value
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    var fragment : Fragment? = null
+    var fragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,12 +55,18 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+
+        if (item.itemId == R.id.action_settings){
+            return true
+        }
+
+        val opcaoProcessada = when (fragment){
+            is ListaDeTelemoveisFragment -> (fragment as ListaDeTelemoveisFragment).processaOpcaoMenu(item)
+            else -> false
+        }
+        return if (opcaoProcessada) { true } else { super.onOptionsItemSelected(item)
         }
     }
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
