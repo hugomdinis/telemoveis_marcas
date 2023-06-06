@@ -56,6 +56,9 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
 
         val loader = LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_TELEMOVEIS, null, this)
+
+        val activity = activity as MainActivity
+        activity.idMenuAtual = R.menu.menu_lista_telemoveis
     }
 
     companion object {
