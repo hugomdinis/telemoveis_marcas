@@ -24,6 +24,7 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     // onDestroyView.
     private val binding get() = _binding!!
 
+    var  telemovelSelecionado : Telemovel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

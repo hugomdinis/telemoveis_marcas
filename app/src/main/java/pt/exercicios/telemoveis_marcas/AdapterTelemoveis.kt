@@ -35,7 +35,8 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
 
         fun seleciona() {
             viewHolderSeleccionado = this
-            itemView.setBackgroundColor(R.color.item_selecionado)
+            fragment.telemovelSelecionado = telemovel
+            itemView.setBackgroundResource(R.color.item_selecionado)
         }
 
         fun desSeleciona() {
