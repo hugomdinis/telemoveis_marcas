@@ -36,5 +36,17 @@
         <action
             android:id="@+id/action_listaDeTelemoveisFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaDeTelemoveisFragment_to_novoTelemovelFragment"
+            app:destination="@id/novoTelemovelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/novoTelemovelFragment"
+        android:name="pt.exercicios.telemoveis_marcas.NovoTelemovelFragment"
+        android:label="@string/novo_telemovel_label"
+        tools:layout="@layout/fragment_novo_telemovel">
+        <action
+            android:id="@+id/action_novoTelemovelFragment_to_ListaDeTelemoveisFragment"
+            app:destination="@id/ListaDeTelemoveisFragment" />
     </fragment>
 </navigation>
