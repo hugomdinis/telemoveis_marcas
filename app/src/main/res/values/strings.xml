@@ -18,4 +18,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lista_de_telemoveis_label">Telemoveis</string>
     <string name="lista_de_marcas_label">Marca</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>
