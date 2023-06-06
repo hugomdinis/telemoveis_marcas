@@ -87,7 +87,7 @@ class BdInstrumentedTest {
         insereTelemovel(bd, telemovelIphone)
 
         val tabelaTelemovel = TabelaTelemoveis(bd)
-        val cursor = tabelaTelemovel.consulta(TabelaTelemoveis.TODOS_OS_CAMPOS,"${BaseColumns._ID}=?", arrayOf(telemovelIphone.idTelemovel.toString()),
+        val cursor = tabelaTelemovel.consulta(TabelaTelemoveis.TODOS_OS_CAMPOS,"${TabelaTelemoveis.CAMPO_ID}=?", arrayOf(telemovelIphone.idTelemovel.toString()),
             null,null,null)
 
         assert(cursor.moveToNext())
