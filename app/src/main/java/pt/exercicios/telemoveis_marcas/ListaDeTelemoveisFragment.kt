@@ -26,6 +26,15 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     private val binding get() = _binding!!
 
     var  telemovelSelecionado : Telemovel? = null
+        set(value) {
+            field = value
+
+            val mostrarEliminarAlterar = (value != null)
+
+            val activity = activity as MainActivity
+            activity.mostraBotaoMenu(R.id.action_editar, mostrarEliminarAlterar)
+            activity.mostraBotaoMenu(R.id.action_eliminar, mostrarEliminarAlterar)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
