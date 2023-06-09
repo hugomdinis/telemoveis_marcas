@@ -2,16 +2,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".NovoTelemovelFragment" >
+    tools:context=".NovoTelemovelFragment">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:autofillHints="" />
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/idTextModelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/modelo"
+            android:inputType="@string/descricaoModelo"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/idTextInformacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/infroma_o"
+                android:inputType="@string/descricaoIndormacao"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/idTextAno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ano"
+                    android:inputType="@string/descricaoAno"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/idTextViewMarca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/marca" />
+
+                <Spinner
+                    android:id="@+id/spinner4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>
+
+    </android.support.design.widget.TextInputLayout>
 </LinearLayout>
