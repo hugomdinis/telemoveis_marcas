@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import pt.exercicios.telemoveis_marcas.databinding.FragmentListaDeTelemoveisBinding
 
 
@@ -120,7 +121,7 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     private fun adicionarTelemovel() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_ListaDeTelemoveisFragment_to_novoTelemovelFragment)
     }
 
 }
