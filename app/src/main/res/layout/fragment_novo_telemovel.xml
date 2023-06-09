@@ -50,7 +50,7 @@
                     android:text="@string/marca" />
 
                 <Spinner
-                    android:id="@+id/spinner4"
+                    android:id="@+id/spinnerMarca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
