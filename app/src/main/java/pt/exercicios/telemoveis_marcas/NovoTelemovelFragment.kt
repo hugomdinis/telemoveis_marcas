@@ -12,6 +12,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleCursorAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import pt.exercicios.telemoveis_marcas.databinding.FragmentNovoTelemovelBinding
 
 private const val ID_LOADER_MARCAS = 0
@@ -26,11 +29,9 @@ class NovoTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View?{
         _binding = FragmentNovoTelemovelBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,19 +56,57 @@ class NovoTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
                 true
             }
             R.id.action_menu_cancelar -> {
-                cancelar()
+                voltarListaTelemoveis()
                 true
             }
             else -> false
         }
     }
 
-    private fun cancelar() {
-        TODO("Not yet implemented")
+    private fun voltarListaTelemoveis() {
+        findNavController().navigate(R.id.action_novoTelemovelFragment_to_ListaDeTelemoveisFragment)
     }
 
     private fun guardar() {
-        TODO("Not yet implemented")
+        val modelo = binding.idTextModelo.text.toString()
+        if (modelo.isBlank()){
+            binding.idTextModelo.error = "Modelo Obrigatorio"
+            binding.idTextModelo.requestFocus()
+            return
+        }
+
+        val informacao = binding.idTextInformacao.text.toString()
+        if (informacao.isBlank()){
+            binding.idTextInformacao.error = "Descriçao Obrigatorio"
+            binding.idTextInformacao.requestFocus()
+            return
+        }
+
+        val ano = binding.idTextAno.text.toString()
+        if (ano.isBlank()){
+            binding.idTextAno.error = "Ano Obrigatorio"
+            binding.idTextAno.requestFocus()
+            return
+        }
+
+        val marca = binding.spinnerMarca.selectedItemId
+        if (marca == Spinner.INVALID_ROW_ID){
+            binding.idTextModelo.error="Marca Obrigatoria"
+            binding.spinnerMarca.requestFocus()
+            return
+        }
+
+        val telemovel = Telemovel(modelo, informacao, ano, Marca("?", marca))
+
+        requireActivity().contentResolver.insert(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.toContentValues())
+
+        if (id == null){
+            binding.idTextAno.error = "Não foi possivel guardar telemóvel"
+            return
+        }
+
+        Toast.makeText(requireContext(), "Telemovel Guardado com sucesso", Toast.LENGTH_LONG).show()
+        voltarListaTelemoveis()
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {

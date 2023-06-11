@@ -14,8 +14,8 @@
             android:id="@+id/idTextModelo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/modelo"
-            android:inputType="@string/descricaoModelo"
+            android:hint="@string/descricaoModelo"
+            android:inputType="text"
             tools:ignore="TouchTargetSizeCheck" />
 
         <android.support.design.widget.TextInputLayout
@@ -26,8 +26,8 @@
                 android:id="@+id/idTextInformacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/infroma_o"
-                android:inputType="@string/descricaoIndormacao"
+                android:hint="@string/descricaoIndormacao"
+                android:inputType="text"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <android.support.design.widget.TextInputLayout
@@ -38,8 +38,8 @@
                     android:id="@+id/idTextAno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/ano"
-                    android:inputType="@string/descricaoAno"
+                    android:hint="@string/descricaoAno"
+                    android:inputType="text"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -54,7 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"/>
+
             </android.support.design.widget.TextInputLayout>
         </android.support.design.widget.TextInputLayout>
 

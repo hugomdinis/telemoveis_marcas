@@ -22,9 +22,9 @@
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
     <string name="novo_telemovel_label">Novo Telemovel</string>
-    <string name="descricaoModelo" />
-    <string name="descricaoIndormacao" />
-    <string name="descricaoAno" />
+    <string name="descricaoModelo">Deve preencher com o nome do modelo</string>
+    <string name="descricaoIndormacao">Descreva o estado do telemovel</string>
+    <string name="descricaoAno">Preencha com o ano do telemovel</string>
     <string name="modelo">Modelo</string>
     <string name="infroma_o">Infromação</string>
     <string name="ano">Ano</string>

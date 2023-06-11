@@ -7,7 +7,7 @@ import android.provider.BaseColumns
 data class Telemovel(
     var modelo: String?,
     var informacao: String?,
-    var ano: Int,
+    var ano: String,
     var marca: Marca,
     var idTelemovel: Long = -1
 ){
@@ -32,7 +32,7 @@ data class Telemovel(
 
             val id = cursor.getLong(posicaoId)
             val nome = cursor.getString(posicaoNome)
-            val ano = cursor.getInt(posicaoAno)
+            val ano = cursor.getString(posicaoAno)
             val informacao = cursor.getString(posicaoInf)
 
             val marcaID = cursor.getLong(posMarcaFK)
