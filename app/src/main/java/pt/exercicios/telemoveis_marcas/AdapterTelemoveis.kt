@@ -18,6 +18,8 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
     inner class ViewHolderTelemoveis(contentor: View): ViewHolder(contentor){
         private val textViewModelo = contentor.findViewById<TextView>(R.id.textViewModelo)
         private val textViewMarca = contentor.findViewById<TextView>(R.id.textViewMarca)
+        private val textViewInformacao = contentor.findViewById<TextView>(R.id.textViewInformacao)
+        private val textViewAno = contentor.findViewById<TextView>(R.id.textViewAno)
 
         init {
             contentor.setOnClickListener {
@@ -31,6 +33,8 @@ class AdapterTelemoveis(val fragment: ListaDeTelemoveisFragment) : RecyclerView.
                 field = value
                 textViewModelo.text = telemovel?.modelo ?: ""
                 textViewMarca.text = telemovel?.marca?.nome_marca ?: ""
+                textViewInformacao.text = telemovel?.informacao ?: ""
+                textViewAno.text = telemovel?.ano ?: ""
             }
 
         fun seleciona() {
