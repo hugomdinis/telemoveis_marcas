@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    android:label="@string/ListaMarca_Lable"
     app:startDestination="@id/MenuPrincipalFragment">
 
     <fragment
@@ -17,6 +18,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaDeTelemoveisFragment"
             app:destination="@id/ListaDeTelemoveisFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaMarcasFragment"
+            app:destination="@id/listaMarcasFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -48,5 +52,14 @@
         <action
             android:id="@+id/action_novoTelemovelFragment_to_ListaDeTelemoveisFragment"
             app:destination="@id/ListaDeTelemoveisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaMarcasFragment"
+        android:name="pt.exercicios.telemoveis_marcas.ListaMarcasFragment"
+        android:label="fragment_lista_marcas"
+        tools:layout="@layout/fragment_lista_marcas">
+        <action
+            android:id="@+id/action_listaMarcasFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
