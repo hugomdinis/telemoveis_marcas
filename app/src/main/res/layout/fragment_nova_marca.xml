@@ -11,8 +11,10 @@
         android:layout_height="match_parent">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextNomeMarca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/marcaPrincipal" />
+            android:hint="@string/marcaPrincipal"
+            tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>

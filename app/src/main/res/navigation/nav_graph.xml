@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/ListaMarcasFragment"
         android:name="pt.exercicios.telemoveis_marcas.ListaMarcasFragment"
-        android:label="fragment_lista_marcas"
+        android:label="@string/lista_de_marcas_label"
         tools:layout="@layout/fragment_lista_marcas">
         <action
             android:id="@+id/action_listaMarcasFragment_to_MenuPrincipalFragment"
@@ -80,8 +80,8 @@
     <fragment
         android:id="@+id/novaMarcaFragment"
         android:name="pt.exercicios.telemoveis_marcas.NovaMarcaFragment"
-        android:label="fragment_nova_marca"
-        tools:layout="@layout/fragment_nova_marca" >
+        android:label="@string/nova_marca_lable"
+        tools:layout="@layout/fragment_nova_marca">
         <action
             android:id="@+id/action_novaMarcaFragment_to_ListaMarcasFragment"
             app:destination="@id/ListaMarcasFragment" />

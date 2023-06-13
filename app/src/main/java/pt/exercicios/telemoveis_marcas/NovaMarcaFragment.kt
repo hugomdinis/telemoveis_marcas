@@ -2,11 +2,11 @@ package pt.exercicios.telemoveis_marcas
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.LoaderManager
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import pt.exercicios.telemoveis_marcas.databinding.FragmentNovaMarcaBinding
 
@@ -45,7 +45,7 @@ class NovaMarcaFragment : Fragment() {
                 true
             }
             R.id.action_menu_cancelar -> {
-                voltarlistaMarcass()
+                voltarlistaMarcas()
                 true
             }
             else -> false
@@ -53,10 +53,27 @@ class NovaMarcaFragment : Fragment() {
     }
 
     private fun guardarMarca() {
-        TODO("Not yet implemented")
+        val nomeMarca = binding.editTextNomeMarca.toString()
+        if (nomeMarca.isBlank()){
+            binding.editTextNomeMarca.error = getString(R.string.nomeMarca_obrigatorio)
+            binding.editTextNomeMarca.requestFocus()
+            return
+        }
+
+        val marca = Marca(nomeMarca)
+
+        requireActivity().contentResolver.insert(TelemoveisContentProvider.ENDERECO_MARCA, marca.toContentValues())
+
+        if (id == null){
+            binding.editTextNomeMarca.error = getString(R.string.imposivel_guardar_marca)
+            return
+        }
+
+        Toast.makeText(requireContext(), getString(R.string.marca_guardada), Toast.LENGTH_LONG).show()
+        voltarlistaMarcas()
     }
 
-    private fun voltarlistaMarcass() {
+    private fun voltarlistaMarcas() {
         findNavController().navigate(R.id.action_novaMarcaFragment_to_ListaMarcasFragment)
     }
 
