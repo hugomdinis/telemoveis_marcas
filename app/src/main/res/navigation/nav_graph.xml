@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_ListaDeTelemoveisFragment_to_novoTelemovelFragment"
             app:destination="@id/novoTelemovelFragment" />
+        <action
+            android:id="@+id/action_ListaDeTelemoveisFragment_to_eliminarTelemovelFragment"
+            app:destination="@id/eliminarTelemovelFragment" />
     </fragment>
     <fragment
         android:id="@+id/novoTelemovelFragment"
@@ -61,5 +64,14 @@
         <action
             android:id="@+id/action_listaMarcasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarTelemovelFragment"
+        android:name="pt.exercicios.telemoveis_marcas.EliminarTelemovelFragment"
+        android:label="@string/elimanr_telemovel_label"
+        tools:layout="@layout/fragment_eliminar_telemovel">
+        <action
+            android:id="@+id/action_eliminarTelemovelFragment_to_ListaDeTelemoveisFragment"
+            app:destination="@id/ListaDeTelemoveisFragment" />
     </fragment>
 </navigation>
