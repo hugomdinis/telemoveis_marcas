@@ -14,7 +14,7 @@ class AdapterMarcas(val fragment: ListaMarcasFragment): RecyclerView.Adapter<Ada
         }
 
     inner class ViewHolderMarcas(contentor: View): RecyclerView.ViewHolder(contentor){
-        private val textViewMarca = contentor.findViewById<TextView>(R.id.textViewMarca)
+        private val textViewMarca = contentor.findViewById<TextView>(R.id.textViewMarcaPrincipal)
 
         init {
             contentor.setOnClickListener {
