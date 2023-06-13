@@ -71,7 +71,7 @@
     <fragment
         android:id="@+id/eliminarTelemovelFragment"
         android:name="pt.exercicios.telemoveis_marcas.EliminarTelemovelFragment"
-        android:label="@string/elimnar_telemovel_label"
+        android:label="@string/eliminar_telemovel_label"
         tools:layout="@layout/fragment_eliminar_telemovel">
         <action
             android:id="@+id/action_eliminarTelemovelFragment_to_ListaDeTelemoveisFragment"

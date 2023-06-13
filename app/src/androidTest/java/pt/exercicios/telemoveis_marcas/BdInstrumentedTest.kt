@@ -44,7 +44,7 @@ class BdInstrumentedTest {
 
     @Before
     fun apagaBaseDados(){
-        // getAppContext().deleteDatabase(BdTelemoveisOpenHelper.NOME_BASE_DADOS)
+        //getAppContext().deleteDatabase(BdTelemoveisOpenHelper.NOME_BASE_DADOS)
     }
 
     @Test

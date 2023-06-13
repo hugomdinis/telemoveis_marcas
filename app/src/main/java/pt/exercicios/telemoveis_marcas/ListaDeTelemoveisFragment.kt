@@ -37,11 +37,6 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
             activity.mostraBotaoMenu(R.id.action_eliminar, mostrarEliminarAlterar)
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -113,7 +108,7 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     private fun eliminarTelemovel() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_ListaDeTelemoveisFragment_to_eliminarTelemovelFragment)
     }
 
     private fun editarTelemovel() {

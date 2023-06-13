@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             is NovoTelemovelFragment -> (fragment as NovoTelemovelFragment).processaOpcaoMenu(item)
             is ListaMarcasFragment -> (fragment as ListaMarcasFragment).processaOpcaoMenu(item)
             is NovaMarcaFragment -> (fragment as NovaMarcaFragment).processaOpcaoMenu(item)
+            is EliminarTelemovelFragment -> (fragment as EliminarTelemovelFragment).processaOpcaoMenu(item)
             else -> false
         }
         return if (opcaoProcessada) { true } else { super.onOptionsItemSelected(item)
