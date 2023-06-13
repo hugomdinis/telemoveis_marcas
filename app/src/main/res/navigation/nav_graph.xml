@@ -76,6 +76,9 @@
         <action
             android:id="@+id/action_eliminarTelemovelFragment_to_ListaDeTelemoveisFragment"
             app:destination="@id/ListaDeTelemoveisFragment" />
+        <argument
+            android:name="telemovel"
+            app:argType="pt.exercicios.telemoveis_marcas" />
     </fragment>
     <fragment
         android:id="@+id/novaMarcaFragment"

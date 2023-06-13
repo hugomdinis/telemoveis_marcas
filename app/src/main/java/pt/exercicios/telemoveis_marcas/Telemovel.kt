@@ -3,6 +3,7 @@ package pt.exercicios.telemoveis_marcas
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 
 data class Telemovel(
     var modelo: String?,
@@ -10,7 +11,7 @@ data class Telemovel(
     var ano: String,
     var marca: Marca,
     var idTelemovel: Long = -1
-){
+) : Serializable {
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
 
