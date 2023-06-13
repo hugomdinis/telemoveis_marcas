@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import pt.exercicios.telemoveis_marcas.databinding.FragmentNovaMarcaBinding
-import pt.exercicios.telemoveis_marcas.databinding.FragmentNovoTelemovelBinding
 
 
 class NovaMarcaFragment : Fragment() {

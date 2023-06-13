@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import pt.exercicios.telemoveis_marcas.databinding.FragmentListaMarcasBinding
 
 private const val ID_LOADER_MARCAS = 0
@@ -105,6 +106,6 @@ class ListaMarcasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun adicionaMarca() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_ListaMarcasFragment_to_novaMarcaFragment)
     }
 }
