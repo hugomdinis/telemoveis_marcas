@@ -32,5 +32,6 @@
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
     <string name="ListaMarca_Lable">Marca</string>
-    <string name="elimanr_telemovel_label">Eliminar Telemovel</string>
+    <string name="elimnar_telemovel_label">Eliminar Telemovel</string>
+    <string name="marcaPrincipal">Inserir a Marca do Telemovel</string>
 </resources>

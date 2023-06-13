@@ -64,14 +64,26 @@
         <action
             android:id="@+id/action_listaMarcasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaMarcasFragment_to_novaMarcaFragment"
+            app:destination="@id/novaMarcaFragment" />
     </fragment>
     <fragment
         android:id="@+id/eliminarTelemovelFragment"
         android:name="pt.exercicios.telemoveis_marcas.EliminarTelemovelFragment"
-        android:label="@string/elimanr_telemovel_label"
+        android:label="@string/elimnar_telemovel_label"
         tools:layout="@layout/fragment_eliminar_telemovel">
         <action
             android:id="@+id/action_eliminarTelemovelFragment_to_ListaDeTelemoveisFragment"
             app:destination="@id/ListaDeTelemoveisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/novaMarcaFragment"
+        android:name="pt.exercicios.telemoveis_marcas.NovaMarcaFragment"
+        android:label="fragment_nova_marca"
+        tools:layout="@layout/fragment_nova_marca" >
+        <action
+            android:id="@+id/action_novaMarcaFragment_to_ListaMarcasFragment"
+            app:destination="@id/ListaMarcasFragment" />
     </fragment>
 </navigation>
