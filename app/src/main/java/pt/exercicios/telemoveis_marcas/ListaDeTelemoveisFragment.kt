@@ -109,7 +109,8 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     private fun eliminarTelemovel() {
-        findNavController().navigate(R.id.action_ListaDeTelemoveisFragment_to_eliminarTelemovelFragment)
+        val acao = ListaDeTelemoveisFragmentDirections.actionListaDeTelemoveisFragmentToEliminarTelemovelFragment(telemovelSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun editarTelemovel() {

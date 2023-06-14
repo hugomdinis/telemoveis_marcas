@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import pt.exercicios.telemoveis_marcas.databinding.FragmentEliminarTelemovelBinding
 
 class EliminarTelemovelFragment : Fragment() {
+    private lateinit var telemovel: Telemovel
     private var _binding: FragmentEliminarTelemovelBinding? = null
 
     // This property is only valid between onCreateView and
@@ -32,6 +33,14 @@ class EliminarTelemovelFragment : Fragment() {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
+
+        telemovel = EliminarTelemovelFragmentArgs.fromBundle(requireArguments()).telemoveis
+
+        binding.textViewMarcaEliminar.text = telemovel.marca.nome_marca
+        binding.textViewModeloEliminar.text = telemovel.modelo
+        binding.textViewIformacaoEliminar.text = telemovel.informacao
+        binding.textViewAnoEliminar.text = telemovel.ano
+        
     }
 
     override fun onDestroyView() {
