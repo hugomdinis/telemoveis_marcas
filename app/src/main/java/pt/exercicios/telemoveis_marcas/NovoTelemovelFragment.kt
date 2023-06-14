@@ -3,10 +3,10 @@ package pt.exercicios.telemoveis_marcas
 
 import android.database.Cursor
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.CursorLoader
-import android.support.v4.content.Loader
+import androidx.fragment.app.Fragment
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
