@@ -1,12 +1,15 @@
 package pt.exercicios.telemoveis_marcas
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import pt.exercicios.telemoveis_marcas.databinding.FragmentEliminarTelemovelBinding
 
 class EliminarTelemovelFragment : Fragment() {
@@ -40,7 +43,7 @@ class EliminarTelemovelFragment : Fragment() {
         binding.textViewModeloEliminar.text = telemovel.modelo
         binding.textViewIformacaoEliminar.text = telemovel.informacao
         binding.textViewAnoEliminar.text = telemovel.ano
-        
+
     }
 
     override fun onDestroyView() {
@@ -55,17 +58,27 @@ class EliminarTelemovelFragment : Fragment() {
                 true
             }
             R.id.action_cancelar -> {
-                voltaListaLivros()
+                voltaListaTelemoveis()
                 true
             }
             else -> false
         }
     }
 
-    private fun voltaListaLivros() {
+    private fun voltaListaTelemoveis() {
         findNavController().navigate(R.id.action_eliminarTelemovelFragment_to_ListaDeTelemoveisFragment)
     }
 
     private fun eliminar() {
+        val enderecoTelemovel = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.toString())
+        val numTelemovelSelecionado = requireActivity().contentResolver.delete(enderecoTelemovel,null,null)
+
+
+        if (numTelemovelSelecionado == 1){
+            Toast.makeText(requireContext(), getString(R.string.telemovel_eliminado_com_sucesso), Toast.LENGTH_LONG).show()
+            voltaListaTelemoveis()
+        }else{
+            Snackbar.make(binding.textViewMarcaEliminar, getString(R.string.erro_eliminar_telemovel), Snackbar.LENGTH_INDEFINITE)
+        }
     }
 }

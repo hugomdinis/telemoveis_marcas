@@ -38,4 +38,6 @@
     <string name="nomeMarca_obrigatorio">Nome Obrigatorio</string>
     <string name="imposivel_guardar_marca">Imposivel guardar marca</string>
     <string name="marca_guardada">Marca guardada com sucesso</string>
+    <string name="telemovel_eliminado_com_sucesso">Telemovel eliminado com sucesso</string>
+    <string name="erro_eliminar_telemovel">Erro ao eliminar telemovel</string>
 </resources>
