@@ -49,16 +49,16 @@
     </fragment>
     <fragment
         android:id="@+id/novoTelemovelFragment"
-        android:name="pt.exercicios.telemoveis_marcas.NovoTelemovelFragment"
+        android:name="pt.exercicios.telemoveis_marcas.EditarTelemovelFragment"
         android:label="@string/novo_telemovel_label"
-        tools:layout="@layout/fragment_novo_telemovel">
+        tools:layout="@layout/fragment_editar_telemovel">
         <action
             android:id="@+id/action_novoTelemovelFragment_to_ListaDeTelemoveisFragment"
             app:destination="@id/ListaDeTelemoveisFragment" />
         <argument
             android:name="telemoveis"
             app:argType="pt.exercicios.telemoveis_marcas.Telemovel"
-            app:nullable="true"/>
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/ListaMarcasFragment"

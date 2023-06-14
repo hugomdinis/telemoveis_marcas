@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         val opcaoProcessada = when (fragment){
             is ListaDeTelemoveisFragment -> (fragment as ListaDeTelemoveisFragment).processaOpcaoMenu(item)
-            is NovoTelemovelFragment -> (fragment as NovoTelemovelFragment).processaOpcaoMenu(item)
+            is EditarTelemovelFragment -> (fragment as EditarTelemovelFragment).processaOpcaoMenu(item)
             is ListaMarcasFragment -> (fragment as ListaMarcasFragment).processaOpcaoMenu(item)
             is NovaMarcaFragment -> (fragment as NovaMarcaFragment).processaOpcaoMenu(item)
             is EliminarTelemovelFragment -> (fragment as EliminarTelemovelFragment).processaOpcaoMenu(item)

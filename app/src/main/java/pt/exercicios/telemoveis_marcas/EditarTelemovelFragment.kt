@@ -15,12 +15,12 @@ import android.widget.SimpleCursorAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import pt.exercicios.telemoveis_marcas.databinding.FragmentNovoTelemovelBinding
+import pt.exercicios.telemoveis_marcas.databinding.FragmentEditarTelemovelBinding
 
 private const val ID_LOADER_MARCAS = 0
 
-class NovoTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
-    private var _binding: FragmentNovoTelemovelBinding? = null
+class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+    private var _binding: FragmentEditarTelemovelBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,7 +30,7 @@ class NovoTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View?{
-        _binding = FragmentNovoTelemovelBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarTelemovelBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -70,7 +70,7 @@ class NovoTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> 
     private fun guardar() {
         val modelo = binding.idTextModelo.text.toString()
         if (modelo.isBlank()){
-            binding.idTextModelo.error = "Modelo Obrigatorio"
+            binding.idTextModelo.error= "Modelo Obrigatorio"
             binding.idTextModelo.requestFocus()
             return
         }
