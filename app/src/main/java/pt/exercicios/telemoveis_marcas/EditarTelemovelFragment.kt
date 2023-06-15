@@ -31,7 +31,7 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View?{
+    ): View{
         _binding = FragmentEditarTelemovelBinding.inflate(inflater, container, false)
         return binding.root
     }
