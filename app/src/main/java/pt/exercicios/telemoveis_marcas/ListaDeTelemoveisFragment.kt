@@ -114,11 +114,12 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
     }
 
     private fun editarTelemovel() {
-        TODO("Not yet implemented")
+        val acao = ListaDeTelemoveisFragmentDirections.actionListaDeTelemoveisFragmentToEditarTelemovelFragment(telemovelSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun adicionarTelemovel() {
-        findNavController().navigate(R.id.action_ListaDeTelemoveisFragment_to_novoTelemovelFragment)
+        findNavController().navigate(R.id.action_ListaDeTelemoveisFragment_to_editarTelemovelFragment)
     }
 
 }

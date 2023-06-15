@@ -41,19 +41,19 @@
             android:id="@+id/action_listaDeTelemoveisFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
         <action
-            android:id="@+id/action_ListaDeTelemoveisFragment_to_novoTelemovelFragment"
-            app:destination="@id/novoTelemovelFragment" />
+            android:id="@+id/action_ListaDeTelemoveisFragment_to_editarTelemovelFragment"
+            app:destination="@id/editarTelemovelFragment" />
         <action
             android:id="@+id/action_ListaDeTelemoveisFragment_to_eliminarTelemovelFragment"
             app:destination="@id/eliminarTelemovelFragment" />
     </fragment>
     <fragment
-        android:id="@+id/novoTelemovelFragment"
+        android:id="@+id/editarTelemovelFragment"
         android:name="pt.exercicios.telemoveis_marcas.EditarTelemovelFragment"
         android:label="@string/novo_telemovel_label"
         tools:layout="@layout/fragment_editar_telemovel">
         <action
-            android:id="@+id/action_novoTelemovelFragment_to_ListaDeTelemoveisFragment"
+            android:id="@+id/action_editarTelemovelFragment_to_ListaDeTelemoveisFragment"
             app:destination="@id/ListaDeTelemoveisFragment" />
         <argument
             android:name="telemoveis"

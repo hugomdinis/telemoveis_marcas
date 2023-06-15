@@ -20,6 +20,7 @@ import pt.exercicios.telemoveis_marcas.databinding.FragmentEditarTelemovelBindin
 private const val ID_LOADER_MARCAS = 0
 
 class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+    private var telemoveis: Telemovel?= null
     private var _binding: FragmentEditarTelemovelBinding? = null
 
     // This property is only valid between onCreateView and
@@ -38,10 +39,19 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         super.onViewCreated(view, savedInstanceState)
 
         val loader = LoaderManager.getInstance(this)
-        loader.initLoader(ID_LOADER_MARCAS, null , this)
+        loader.initLoader(ID_LOADER_MARCAS, null, this)
+
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
+
+        val telemovel = EditarTelemovelFragmentArgs.fromBundle(requireArguments()).telemoveis
+
+        if (telemovel != null) {
+            binding.idTextModelo.setText(telemovel.modelo)
+            binding.idTextInformacao.setText(telemovel.informacao)
+            binding.idTextAno.setText(telemovel.ano)
+        }
     }
 
     override fun onDestroyView() {
@@ -64,7 +74,7 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     }
 
     private fun voltarListaTelemoveis() {
-        findNavController().navigate(R.id.action_novoTelemovelFragment_to_ListaDeTelemoveisFragment)
+        findNavController().navigate(R.id.action_editarTelemovelFragment_to_ListaDeTelemoveisFragment)
     }
 
     private fun guardar() {
@@ -137,6 +147,22 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
             intArrayOf(android.R.id.text1),
             0
         )
+
+        mostraMarcaSelcionadoSpinner()
     }
+    private fun mostraMarcaSelcionadoSpinner(){
+        if (telemoveis == null) return
+
+        val idMarca = telemoveis!!.marca.idMarca
+
+        val ultimaMarca = binding.spinnerMarca.count - 1
+        for (i in 0..ultimaMarca){
+            if (idMarca == binding.spinnerMarca.getItemIdAtPosition(i)){
+                binding.spinnerMarca.setSelection(i)
+                return
+            }
+        }
+    }
+
 
 }
