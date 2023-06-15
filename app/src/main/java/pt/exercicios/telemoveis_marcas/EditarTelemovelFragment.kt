@@ -2,6 +2,7 @@ package pt.exercicios.telemoveis_marcas
 
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
@@ -106,16 +107,61 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
             return
         }
 
-        val telemovel = Telemovel(modelo, informacao, ano, Marca("?", marca))
+        if (telemoveis == null){
+            val telemovel = Telemovel(
+                modelo,
+                informacao,
+                ano,
+                Marca("?", marca)
+            )
 
-        requireActivity().contentResolver.insert(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.toContentValues())
+            insereTelemovel(telemovel)
+        }else{
+            val telemovel = telemoveis!!
+            telemovel.modelo = modelo
+            telemovel.informacao = informacao
+            telemovel.ano = ano
+            telemovel.marca = Marca("?", marca)
+
+            alteraTelemovel(telemovel)
+        }
+    }
+
+    private fun alteraTelemovel(
+        telemovel: Telemovel
+    ){
+        val endrecoTelemovel = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.idTelemovel.toString())
+        val telemoveisAlterados = requireActivity().contentResolver.update(endrecoTelemovel, telemovel.toContentValues(), null, null)
+
+        if (telemoveisAlterados == 1){
+            Toast.makeText(requireContext(), R.string.telemovel_guardado_com_sucesso, Toast.LENGTH_LONG).show()
+            voltarListaTelemoveis()
+        }else{
+            binding.idTextModelo.error = getString(R.string.nao_foi_possivel_guardar_telemovel)
+        }
+    }
+
+    private fun insereTelemovel(
+        telemovel: Telemovel
+    ){
+
+        val id = requireActivity().contentResolver.insert(
+            TelemoveisContentProvider.ENDERECO_TELEMOVEIS,
+            telemovel.toContentValues()
+        )
 
         if (id == null){
-            binding.idTextAno.error = "Não foi possivel guardar telemóvel"
+            binding.idTextModelo.error=
+                getString(R.string.nao_foi_possivel_guardar_telemovel)
             return
         }
 
-        Toast.makeText(requireContext(), "Telemovel Guardado com sucesso", Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.telemovel_guardado_com_sucesso),
+            Toast.LENGTH_LONG
+        ).show()
+
         voltarListaTelemoveis()
     }
 
