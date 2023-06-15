@@ -84,6 +84,9 @@ class ListaDeTelemoveisFragment : Fragment(), LoaderManager.LoaderCallbacks<Curs
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
         adapterTelemoveis!!.cursor = null
+        if (adapterTelemoveis != null){
+            adapterTelemoveis!!.cursor = null
+        }
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {

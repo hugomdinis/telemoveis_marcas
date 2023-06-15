@@ -28,7 +28,7 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View?{
+    ): View{
         _binding = FragmentEditarTelemovelBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -162,6 +162,9 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
         binding.spinnerMarca.adapter = null
+        if (binding !=null){
+            binding.spinnerMarca.adapter = null
+        }
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
