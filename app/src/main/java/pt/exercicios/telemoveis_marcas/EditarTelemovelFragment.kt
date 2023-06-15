@@ -2,6 +2,7 @@ package pt.exercicios.telemoveis_marcas
 
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
@@ -22,9 +23,6 @@ private const val ID_LOADER_MARCAS = 0
 class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var telemoveis: Telemovel?= null
     private var _binding: FragmentEditarTelemovelBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -45,7 +43,7 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
 
-        val telemovel = EditarTelemovelFragmentArgs.fromBundle(requireArguments()).telemoveis
+        val telemovel = EditarTelemovelFragmentArgs.fromBundle(requireArguments()).telemovel
 
         if (telemovel != null) {
             binding.idTextModelo.setText(telemovel.modelo)
@@ -100,22 +98,55 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         }
 
         val marca = binding.spinnerMarca.selectedItemId
-        if (marca == Spinner.INVALID_ROW_ID){
-            binding.idTextModelo.error="Marca Obrigatoria"
-            binding.spinnerMarca.requestFocus()
-            return
+
+        if (telemoveis == null){
+            val telemovel = Telemovel(
+                modelo,
+                informacao,
+                ano,
+                Marca("?",marca)
+            )
+            insereTelemovel(telemovel)
+        }else{
+            val telemovel = telemoveis!!
+            telemovel.modelo = modelo
+            telemovel.informacao = informacao
+            telemovel.ano = ano
+            telemovel.marca = Marca("?", marca)
+
+            alteraTelemovel(telemovel)
         }
+    }
 
-        val telemovel = Telemovel(modelo, informacao, ano, Marca("?", marca))
+    private fun alteraTelemovel(telemovel: Telemovel) {
+        val enderecoTelemovel = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.idTelemovel.toString())
+        val telemovelAlterados = requireActivity().contentResolver.update(enderecoTelemovel, telemovel.toContentValues(), null, null)
 
-        requireActivity().contentResolver.insert(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.toContentValues())
+        if (telemovelAlterados == 1){
+            Toast.makeText(requireContext(), R.string.telemovel_guardado_com_sucesso, Toast.LENGTH_LONG).show()
+            voltarListaTelemoveis()
+        }else{
+            binding.idTextModelo.error = getString(R.string.nao_foi_possivel_guarda_telemovel)
+        }
+    }
+
+    private fun insereTelemovel(telemovel: Telemovel) {
+        val id = requireActivity().contentResolver.insert(
+            TelemoveisContentProvider.ENDERECO_TELEMOVEIS,
+            telemovel.toContentValues()
+        )
 
         if (id == null){
-            binding.idTextAno.error = "Não foi possivel guardar telemóvel"
+            binding.idTextModelo.error=
+                getString(R.string.nao_foi_possivel_guarda_telemovel)
             return
         }
 
-        Toast.makeText(requireContext(), "Telemovel Guardado com sucesso", Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.telemovel_guardado_com_sucesso),
+            Toast.LENGTH_LONG
+        ).show()
         voltarListaTelemoveis()
     }
 

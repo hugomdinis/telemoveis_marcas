@@ -40,4 +40,6 @@
     <string name="marca_guardada">Marca guardada com sucesso</string>
     <string name="telemovel_eliminado_com_sucesso">Telemovel eliminado com sucesso</string>
     <string name="erro_eliminar_telemovel">Erro ao eliminar telemovel</string>
+    <string name="telemovel_guardado_com_sucesso">Telemovel guardado com sucesso</string>
+    <string name="nao_foi_possivel_guarda_telemovel">Não foi possivel guardar o telemovel\n</string>
 </resources>

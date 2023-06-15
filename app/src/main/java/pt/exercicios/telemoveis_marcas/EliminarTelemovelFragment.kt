@@ -37,7 +37,7 @@ class EliminarTelemovelFragment : Fragment() {
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
 
-        telemovel = EliminarTelemovelFragmentArgs.fromBundle(requireArguments()).telemoveis
+        telemovel = EliminarTelemovelFragmentArgs.fromBundle(requireArguments()).telemovel
 
         binding.textViewMarcaEliminar.text = telemovel.marca.nome_marca
         binding.textViewModeloEliminar.text = telemovel.modelo
