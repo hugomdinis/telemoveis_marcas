@@ -82,4 +82,6 @@ class MainActivity : AppCompatActivity() {
     fun mostraBotaoMenu(idOpcao : Int, mostrar : Boolean) {
         menu.findItem(idOpcao).setVisible(mostrar)
     }
+
+    fun atualizaModelo(editarLabel: Int) = binding.toolbar.setTitle(editarLabel)
 }

@@ -46,10 +46,16 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
         val telemovel = EditarTelemovelFragmentArgs.fromBundle(requireArguments()).telemovel
 
         if (telemovel != null) {
+            activity.atualizaModelo(R.string.editar_label)
+
             binding.idTextModelo.setText(telemovel.modelo)
             binding.idTextInformacao.setText(telemovel.informacao)
             binding.idTextAno.setText(telemovel.ano)
+        }else{
+            activity.atualizaModelo(R.string.novo_telemovel_label)
         }
+
+        this.telemoveis = telemovel
     }
 
     override fun onDestroyView() {
