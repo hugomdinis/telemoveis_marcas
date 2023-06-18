@@ -34,7 +34,7 @@
     <string name="ListaMarca_Lable">Marca</string>
     <string name="eliminar_telemovel_label">Eliminar Telemovel</string>
     <string name="marcaPrincipal">Inserir a Marca do Telemovel</string>
-    <string name="nova_marca_lable">Nova Marca</string>
+    <string name="nova_marca_label">Nova Marca</string>
     <string name="nomeMarca_obrigatorio">Nome Obrigatorio</string>
     <string name="imposivel_guardar_marca">Imposivel guardar marca</string>
     <string name="marca_guardada">Marca guardada com sucesso</string>
@@ -46,4 +46,6 @@
     <string name="eliminar_marca_label">Eliminar Marca</string>
     <string name="marca_eliminada_com_sucesso">Marca eliminada com sucesso</string>
     <string name="erro_ao_eliminar_marca">Erro ao eliminar Marca</string>
+    <string name="editar_marca">Editar Marca</string>
+    <string name="marca_alterada_com_sucesso">Marca alterada com sucesso</string>
 </resources>
