@@ -95,6 +95,10 @@
         <action
             android:id="@+id/action_EditarMarcaFragment_to_ListaMarcasFragment"
             app:destination="@id/ListaMarcasFragment" />
+        <argument
+            android:name="marcas"
+            app:argType="com.azevedo.noticias.Marca"
+            app:nullable="true"/>
     </fragment>
     <fragment
         android:id="@+id/eliminarMarcaFragment"
@@ -104,5 +108,8 @@
         <action
             android:id="@+id/action_eliminarMarcaFragment_to_ListaMarcasFragment"
             app:destination="@id/ListaMarcasFragment" />
+        <argument
+            android:name="marcas"
+            app:argType="pt.exercicios.telemoveis_marcas.Marca"/>
     </fragment>
 </navigation>

@@ -44,4 +44,6 @@
     <string name="nao_foi_possivel_guarda_telemovel">Não foi possivel guardar o telemovel\n</string>
     <string name="editar_label">Editar Telemovel\n</string>
     <string name="eliminar_marca_label">Eliminar Marca</string>
+    <string name="marca_eliminada_com_sucesso">Marca eliminada com sucesso</string>
+    <string name="erro_ao_eliminar_marca">Erro ao eliminar Marca</string>
 </resources>

@@ -3,6 +3,7 @@ package pt.exercicios.telemoveis_marcas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 
@@ -35,6 +36,10 @@ class EliminarMarcaFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_eliminar_marca, container, false)
+    }
+
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+
     }
 
     companion object {

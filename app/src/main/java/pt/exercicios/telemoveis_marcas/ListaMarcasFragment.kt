@@ -99,11 +99,13 @@ class ListaMarcasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun eliminarMarca() {
-        TODO("Not yet implemented")
+        val acao = ListaMarcasFragmentDirections.actionListaMarcasFragmentToEliminarMarcaFragment(marcaSelecionada!!)
+        findNavController().navigate(acao)
     }
 
     private fun editarMarca() {
-        TODO("Not yet implemented")
+       val acao = ListaMarcasFragmentDirections.actionListaMarcasFragmentToEditarMarcaFragment(null)
+        findNavController().navigate(acao)
     }
 
     private fun adicionaMarca() {

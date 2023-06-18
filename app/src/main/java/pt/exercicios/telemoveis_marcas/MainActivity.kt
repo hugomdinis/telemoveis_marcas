@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
             is ListaMarcasFragment -> (fragment as ListaMarcasFragment).processaOpcaoMenu(item)
             is EditarMarcaFragment -> (fragment as EditarMarcaFragment).processaOpcaoMenu(item)
             is EliminarTelemovelFragment -> (fragment as EliminarTelemovelFragment).processaOpcaoMenu(item)
+            is EliminarMarcaFragment -> (fragment as EliminarMarcaFragment).processaOpcaoMenu(item)
             else -> false
         }
         return if (opcaoProcessada) { true } else { super.onOptionsItemSelected(item)
