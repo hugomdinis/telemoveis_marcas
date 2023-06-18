@@ -1,64 +1,79 @@
 package pt.exercicios.telemoveis_marcas
 
+
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import pt.exercicios.telemoveis_marcas.databinding.FragmentEliminarMarcaBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EliminarMarcaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EliminarMarcaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var marca: Marca
+    private var _binding: FragmentEliminarMarcaBinding? = null
+
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eliminar_marca, container, false)
+        _binding = FragmentEliminarMarcaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_eliminar
+
+        marca = EliminarMarcaFragmentArgs.fromBundle(requireArguments()).marcas
+
+        binding.textViewMarcaEliminar.text = marca.nome_marca
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
-
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EliminarMarcaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EliminarMarcaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        return when (item.itemId) {
+            R.id.action_eliminar -> {
+                eliminar()
+                true
             }
+            R.id.action_cancelar -> {
+                voltaListaMarcas()
+                true
+            }
+            else -> false
+        }
     }
+
+    private fun voltaListaMarcas() {
+        findNavController().navigate(R.id.action_eliminarMarcaFragment_to_ListaMarcasFragment)
+    }
+
+    private fun eliminar() {
+        val enderecoCategorias = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_MARCA, marca.idMarca.toString())
+        val numCategoriaSelecionadas = requireActivity().contentResolver.delete(enderecoCategorias,null, null)
+
+        if (numCategoriaSelecionadas == 1){
+            Toast.makeText(requireContext(), getString(R.string.marca_eliminada_com_sucesso), Toast.LENGTH_LONG).show()
+            voltaListaMarcas()
+        } else{
+            Snackbar.make(binding.textViewMarcaEliminar, getString(R.string.erro_ao_eliminar_marca), Snackbar.LENGTH_INDEFINITE)
+
+        }
+    }
+
 }
