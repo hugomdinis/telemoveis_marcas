@@ -167,7 +167,6 @@ class EditarTelemovelFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        binding.spinnerMarca.adapter = null
         if (binding !=null){
             binding.spinnerMarca.adapter = null
         }

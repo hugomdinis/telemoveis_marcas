@@ -70,7 +70,7 @@ class EliminarTelemovelFragment : Fragment() {
     }
 
     private fun eliminar() {
-        val enderecoTelemovel = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.toString())
+        val enderecoTelemovel = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_TELEMOVEIS, telemovel.idTelemovel.toString())
         val numTelemovelSelecionado = requireActivity().contentResolver.delete(enderecoTelemovel,null,null)
 
 
