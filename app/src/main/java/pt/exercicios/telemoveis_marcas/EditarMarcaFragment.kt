@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import pt.exercicios.telemoveis_marcas.databinding.FragmentNovaMarcaBinding
+import pt.exercicios.telemoveis_marcas.databinding.FragmentEditarMarcaBinding
 
 
-class NovaMarcaFragment : Fragment() {
+class EditarMarcaFragment : Fragment() {
 
-    private var _binding: FragmentNovaMarcaBinding? = null
+    private var _binding: FragmentEditarMarcaBinding? = null
 
     private val binding get () = _binding!!
 
@@ -21,7 +21,7 @@ class NovaMarcaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View?{
-        _binding = FragmentNovaMarcaBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarMarcaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -74,7 +74,7 @@ class NovaMarcaFragment : Fragment() {
     }
 
     private fun voltarlistaMarcas() {
-        findNavController().navigate(R.id.action_novaMarcaFragment_to_ListaMarcasFragment)
+        findNavController().navigate(R.id.action_EditarMarcaFragment_to_ListaMarcasFragment)
     }
 
 }

@@ -107,6 +107,6 @@ class ListaMarcasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun adicionaMarca() {
-        findNavController().navigate(R.id.action_ListaMarcasFragment_to_novaMarcaFragment)
+        findNavController().navigate(R.id.action_ListaMarcasFragment_to_EditarMarcaFragment)
     }
 }

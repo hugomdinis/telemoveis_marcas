@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             is ListaDeTelemoveisFragment -> (fragment as ListaDeTelemoveisFragment).processaOpcaoMenu(item)
             is EditarTelemovelFragment -> (fragment as EditarTelemovelFragment).processaOpcaoMenu(item)
             is ListaMarcasFragment -> (fragment as ListaMarcasFragment).processaOpcaoMenu(item)
-            is NovaMarcaFragment -> (fragment as NovaMarcaFragment).processaOpcaoMenu(item)
+            is EditarMarcaFragment -> (fragment as EditarMarcaFragment).processaOpcaoMenu(item)
             is EliminarTelemovelFragment -> (fragment as EliminarTelemovelFragment).processaOpcaoMenu(item)
             else -> false
         }

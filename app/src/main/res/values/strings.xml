@@ -43,4 +43,5 @@
     <string name="telemovel_guardado_com_sucesso">Telemovel guardado com sucesso</string>
     <string name="nao_foi_possivel_guarda_telemovel">Não foi possivel guardar o telemovel\n</string>
     <string name="editar_label">Editar Telemovel\n</string>
+    <string name="eliminar_marca_label">Eliminar Marca</string>
 </resources>

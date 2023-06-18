@@ -69,8 +69,11 @@
             android:id="@+id/action_listaMarcasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
         <action
-            android:id="@+id/action_ListaMarcasFragment_to_novaMarcaFragment"
-            app:destination="@id/novaMarcaFragment" />
+            android:id="@+id/action_ListaMarcasFragment_to_EditarMarcaFragment"
+            app:destination="@id/EditarMarcaFragment" />
+        <action
+            android:id="@+id/action_ListaMarcasFragment_to_eliminarMarcaFragment"
+            app:destination="@id/eliminarMarcaFragment" />
     </fragment>
     <fragment
         android:id="@+id/eliminarTelemovelFragment"
@@ -85,12 +88,21 @@
             app:argType="pt.exercicios.telemoveis_marcas.Telemovel" />
     </fragment>
     <fragment
-        android:id="@+id/novaMarcaFragment"
-        android:name="pt.exercicios.telemoveis_marcas.NovaMarcaFragment"
+        android:id="@+id/EditarMarcaFragment"
+        android:name="pt.exercicios.telemoveis_marcas.EditarMarcaFragment"
         android:label="@string/nova_marca_lable"
-        tools:layout="@layout/fragment_nova_marca">
+        tools:layout="@layout/fragment_editar_marca">
         <action
-            android:id="@+id/action_novaMarcaFragment_to_ListaMarcasFragment"
+            android:id="@+id/action_EditarMarcaFragment_to_ListaMarcasFragment"
+            app:destination="@id/ListaMarcasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarMarcaFragment"
+        android:name="pt.exercicios.telemoveis_marcas.EliminarMarcaFragment"
+        android:label="fragment_eliminar_marca"
+        tools:layout="@layout/fragment_eliminar_marca" >
+        <action
+            android:id="@+id/action_eliminarMarcaFragment_to_ListaMarcasFragment"
             app:destination="@id/ListaMarcasFragment" />
     </fragment>
 </navigation>
