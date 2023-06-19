@@ -19,9 +19,9 @@ class PesquisaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentPesquisaBinding? = null
     private val binding get() = _binding!!
-    private var adapterNoticias: AdapterPesquisar? = null
+    private var adapterTelemoveis: AdapterPesquisar? = null
 
-    var noticiaSelecionado: Telemovel? = null
+    var telemovelSelecionado: Telemovel? = null
         set(value) {
             field = value
         }
@@ -44,8 +44,8 @@ class PesquisaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapterNoticias = AdapterPesquisar(this)
-        binding.RecyclerViewPesquisa.adapter = adapterNoticias
+        adapterTelemoveis = AdapterPesquisar(this)
+        binding.RecyclerViewPesquisa.adapter = adapterTelemoveis
         binding.RecyclerViewPesquisa.layoutManager = LinearLayoutManager(requireContext())
 
         val loader = LoaderManager.getInstance(this)
@@ -85,13 +85,13 @@ class PesquisaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        if (adapterNoticias != null) {
-            adapterNoticias!!.cursor = null
+        if (adapterTelemoveis != null) {
+            adapterTelemoveis!!.cursor = null
         }
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        adapterNoticias!!.cursor = data
+        adapterTelemoveis!!.cursor = data
     }
 
     private fun restartLoader() {
