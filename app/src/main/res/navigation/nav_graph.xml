@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_listaMarcasFragment"
             app:destination="@id/ListaMarcasFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_pesquisaFragment"
+            app:destination="@id/pesquisaFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -111,5 +114,14 @@
         <argument
             android:name="marcas"
             app:argType="pt.exercicios.telemoveis_marcas.Marca"/>
+    </fragment>
+    <fragment
+        android:id="@+id/pesquisaFragment"
+        android:name="pt.exercicios.telemoveis_marcas.PesquisaFragment"
+        android:label="@string/pesquisa_label"
+        tools:layout="@layout/fragment_pesquisa" >
+        <action
+            android:id="@+id/action_pesquisaFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>

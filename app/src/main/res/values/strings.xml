@@ -48,4 +48,6 @@
     <string name="erro_ao_eliminar_marca">Erro ao eliminar Marca</string>
     <string name="editar_marca">Editar Marca</string>
     <string name="marca_alterada_com_sucesso">Marca alterada com sucesso</string>
+    <string name="telemovel_pesquisa">Telemovel a pesquisar</string>
+    <string name="pesquisa_label">Pesquisa</string>
 </resources>
