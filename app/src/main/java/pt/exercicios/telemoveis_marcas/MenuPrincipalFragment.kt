@@ -44,6 +44,10 @@ class MenuPrincipalFragment : Fragment() {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaMarcasFragment)
         }
 
+        binding.buttonPesquisar.setOnClickListener{
+            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_pesquisaFragment)
+        }
+
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_main
