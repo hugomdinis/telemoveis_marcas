@@ -11,10 +11,11 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNomeMarca"
+            android:id="@+id/editTextNomeMarcaPrincipal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/marcaPrincipal"
-            tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
+            android:layout_margin="8dp"
+            android:hint="@string/marca"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

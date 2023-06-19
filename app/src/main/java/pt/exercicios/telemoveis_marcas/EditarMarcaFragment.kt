@@ -39,7 +39,7 @@ class EditarMarcaFragment : Fragment() {
         if (marca != null){
             activity.atualizaModelo(R.string.editar_marca)
 
-            binding.editTextNomeMarca.setText(marca.nome_marca)
+            binding.editTextNomeMarcaPrincipal.setText(marca.nome_marca)
         }else{
             activity.atualizaModelo(R.string.nova_marca_label)
         }
@@ -50,6 +50,10 @@ class EditarMarcaFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun voltarlistaMarcas() {
+        findNavController().navigate(R.id.action_EditarMarcaFragment_to_ListaMarcasFragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -67,34 +71,34 @@ class EditarMarcaFragment : Fragment() {
     }
 
     private fun guardarMarca() {
-        val nomeMarca = binding.editTextNomeMarca.toString()
-        if (nomeMarca.isBlank()){
-            binding.editTextNomeMarca.error = getString(R.string.nomeMarca_obrigatorio)
-            binding.editTextNomeMarca.requestFocus()
+        val nomeMarca1 = binding.editTextNomeMarcaPrincipal.toString()
+        if (nomeMarca1.isBlank()){
+            binding.editTextNomeMarcaPrincipal.error = getString(R.string.nomeMarca_obrigatorio)
+            binding.editTextNomeMarcaPrincipal.requestFocus()
             return
         }
 
-        if (marcas == null){
-            val marca = Marca(nomeMarca)
+        if (marcas== null){
+            val marca = Marca(nomeMarca1)
 
             insereMarca(marca)
         }else{
             val marca = marcas!!
-            marca.nome_marca = nomeMarca
+            marca.nome_marca = nomeMarca1
 
             alteraMarca(marca)
         }
     }
 
-    private fun alteraMarca(marca: Marca) {
-        val enderecoMarca = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_MARCA, marca.idMarca.toString())
-        val MarcasAlteradas = requireActivity().contentResolver.update(enderecoMarca, marca.toContentValues(), null, null)
+    private fun alteraMarca(marcas: Marca) {
+        val enderecoMarca = Uri.withAppendedPath(TelemoveisContentProvider.ENDERECO_MARCA, marcas.idMarca.toString())
+        val MarcasAlteradas = requireActivity().contentResolver.update(enderecoMarca, marcas.toContentValues(), null, null)
 
         if(MarcasAlteradas == 1){
             Toast.makeText(requireContext(), getString(R.string.marca_alterada_com_sucesso), Toast.LENGTH_LONG).show()
             voltarlistaMarcas()
         }else{
-            binding.editTextNomeMarca.error = getString(R.string.imposivel_guardar_marca)
+            binding.editTextNomeMarcaPrincipal.error = getString(R.string.imposivel_guardar_marca)
         }
     }
 
@@ -105,7 +109,7 @@ class EditarMarcaFragment : Fragment() {
         )
 
         if (id == null) {
-            binding.editTextNomeMarca.error =
+            binding.editTextNomeMarcaPrincipal.error =
                 getString(R.string.imposivel_guardar_marca)
             return
         }
@@ -117,9 +121,4 @@ class EditarMarcaFragment : Fragment() {
         ).show()
         voltarlistaMarcas()
     }
-
-    private fun voltarlistaMarcas() {
-        findNavController().navigate(R.id.action_EditarMarcaFragment_to_ListaMarcasFragment)
-    }
-
 }

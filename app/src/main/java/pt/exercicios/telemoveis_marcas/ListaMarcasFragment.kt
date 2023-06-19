@@ -104,11 +104,12 @@ class ListaMarcasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun editarMarca() {
-       val acao = ListaMarcasFragmentDirections.actionListaMarcasFragmentToEditarMarcaFragment(null)
+       val acao = ListaMarcasFragmentDirections.actionListaMarcasFragmentToEditarMarcaFragment(marcaSelecionada!!)
         findNavController().navigate(acao)
     }
 
     private fun adicionaMarca() {
-        findNavController().navigate(R.id.action_ListaMarcasFragment_to_EditarMarcaFragment)
+        val acao = ListaMarcasFragmentDirections.actionListaMarcasFragmentToEditarMarcaFragment(null)
+        findNavController().navigate(acao)
     }
 }

@@ -42,7 +42,7 @@ class AdapterMarcas(val fragment: ListaMarcasFragment): RecyclerView.Adapter<Ada
 
         private var viewHolderSeleccionado : AdapterMarcas.ViewHolderMarcas? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMarcas {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterMarcas.ViewHolderMarcas {
         return ViewHolderMarcas(
             fragment.layoutInflater.inflate(R.layout.item_marca, parent, false)
         )
@@ -52,7 +52,7 @@ class AdapterMarcas(val fragment: ListaMarcasFragment): RecyclerView.Adapter<Ada
         return cursor?.count ?: 0
     }
 
-    override fun onBindViewHolder(holder: ViewHolderMarcas, position: Int) {
+    override fun onBindViewHolder(holder: AdapterMarcas.ViewHolderMarcas, position: Int) {
         cursor!!.moveToPosition(position)
         holder.marcas=Marca.fromCursor(cursor!!)
     }
